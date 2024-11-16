@@ -22,7 +22,9 @@
     "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
     "@typescript-eslint/camelcase": "off",
     "import/extensions": ["error", "ignorePackages"],
-    "no-console": "error"
+    "no-console": "error",
+    "@typescript-eslint/no-throw-literal": "warn",
+    "@typescript-eslint/lines-between-class-members": "warn"
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
