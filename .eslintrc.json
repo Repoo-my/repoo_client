@@ -24,7 +24,8 @@
     "import/extensions": ["error", "ignorePackages"],
     "no-console": "error",
     "@typescript-eslint/no-throw-literal": "warn",
-    "@typescript-eslint/lines-between-class-members": "warn"
+    "@typescript-eslint/lines-between-class-members": "warn",
+    "import/prefer-default-export": "off"
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
