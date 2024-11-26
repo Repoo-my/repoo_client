@@ -1,6 +1,6 @@
 import React from "react";
 
-function Menu() {
+const Menu = () => {
   return (
     <svg
       width="24"
@@ -21,6 +21,6 @@ function Menu() {
       </g>
     </svg>
   );
-}
+};
 
 export default Menu;

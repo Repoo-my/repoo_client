@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sparkle = () => {
+const Office = () => {
   return (
     <svg
       width="24"
@@ -9,10 +9,10 @@ const Sparkle = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g id="icon / heroicons / Outline / sparkles">
+      <g id="icon / heroicons / Outline / office-building">
         <path
           id="Icon"
-          d="M5 3V7M3 5H7M6 17V21M4 19H8M13 3L15.2857 9.85714L21 12L15.2857 14.1429L13 21L10.7143 14.1429L5 12L10.7143 9.85714L13 3Z"
+          d="M19 21V5C19 3.89543 18.1046 3 17 3H7C5.89543 3 5 3.89543 5 5V21M19 21L21 21M19 21H14M5 21L3 21M5 21H10M9 6.99998H10M9 11H10M14 6.99998H15M14 11H15M10 21V16C10 15.4477 10.4477 15 11 15H13C13.5523 15 14 15.4477 14 16V21M10 21H14"
           stroke="#5A5A5A"
           strokeWidth="2"
           strokeLinecap="round"
@@ -23,4 +23,4 @@ const Sparkle = () => {
   );
 };
 
-export default Sparkle;
+export default Office;
