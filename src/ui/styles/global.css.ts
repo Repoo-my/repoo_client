@@ -33,6 +33,12 @@ globalStyle(":root", {
   },
 });
 
+globalStyle("*", {
+  margin: "0",
+  padding: "0",
+  boxSizing: "border-box",
+});
+
 globalStyle("ul, li", {
   listStyle: "none",
 });

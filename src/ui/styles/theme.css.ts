@@ -1,6 +1,6 @@
 import { createGlobalTheme } from "@vanilla-extract/css";
 
-const theme = createGlobalTheme("root", {
+const theme = createGlobalTheme(":root", {
   light: {
     orange: "#FFDCC6",
     rose: "#FFC8B4",
@@ -30,7 +30,7 @@ const theme = createGlobalTheme("root", {
     500: "#787878",
     600: "#5A5A5A",
   },
-  white: "#EFEFEF",
+  white: "#FFFFFF",
   black: "#171719",
 });
 

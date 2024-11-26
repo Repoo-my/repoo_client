@@ -1,3 +1,5 @@
+import * as s from "./style.css";
+
 export default function Home() {
-  return <div>홈</div>;
+  return <div className={s.container} />;
 }
