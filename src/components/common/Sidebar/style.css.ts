@@ -10,6 +10,7 @@ export const container = style({
   borderRight: `1px solid ${theme.gray[100]}`,
   background: `${theme.white}`,
   flexDirection: "column",
+  userSelect: "none",
 });
 
 export const logoBox = style({
