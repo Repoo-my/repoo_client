@@ -3,14 +3,14 @@
 import React, { useState } from "react";
 import Logo from "@/ui/src/assets/Logo";
 import DownArrow from "@/ui/src/icons/DownArrow";
-import * as s from "./style.css";
 import { sidebarMenu } from "@/data/sidebarMenu";
+import * as s from "./style.css";
 
 interface OpenedMenus {
   [key: number]: boolean;
 }
 
-const Sidebar = () => {
+function Sidebar() {
   const [openedMenus, setOpenedMenus] = useState<OpenedMenus>(
     Object.fromEntries(sidebarMenu.map((menu) => [menu.id, true])),
   );
@@ -32,14 +32,15 @@ const Sidebar = () => {
             <div className={s.header}>
               <p className={s.bigText}>{menu.title}</p>
               <div className={s.line} />
-              <div
+              <button
+                type="button"
                 onClick={() => toggleCategory(menu.id)}
                 className={`${s.iconBox} ${
                   openedMenus[menu.id] ? s.opened : s.closed
                 }`}
               >
                 <DownArrow />
-              </div>
+              </button>
             </div>
             {openedMenus[menu.id] && (
               <div className={s.menuList}>
@@ -56,6 +57,6 @@ const Sidebar = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Sidebar;
