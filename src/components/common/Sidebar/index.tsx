@@ -1,17 +1,23 @@
 "use client";
+import React, { useState } from "react";
 import Logo from "@/ui/src/assets/Logo";
 import DownArrow from "@/ui/src/icons/DownArrow";
-import Menu from "@/ui/src/icons/Sidebar/Menu";
-import Sparkle from "@/ui/src/icons/Sidebar/Sparkle";
 import * as s from "./style.css";
-import { useState } from "react";
 import { sidebarMenu } from "@/data/sidebarMenu";
 
-const Sidebar = () => {
-  const [isOpened, setIsOpened] = useState(true);
+interface OpenedMenus {
+  [key: number]: boolean;
+}
 
-  const handleCategoryOpen = () => {
-    setIsOpened(!isOpened);
+const Sidebar = () => {
+  const [openedMenus, setOpenedMenus] = useState<OpenedMenus>(
+    Object.fromEntries(sidebarMenu.map((menu) => [menu.id, true])),
+  );
+  const toggleCategory = (menuId: number) => {
+    setOpenedMenus((prev) => ({
+      ...prev,
+      [menuId]: !prev[menuId],
+    }));
   };
 
   return (
@@ -26,13 +32,15 @@ const Sidebar = () => {
               <p className={s.bigText}>{menu.title}</p>
               <div className={s.line} />
               <div
-                onClick={handleCategoryOpen}
-                className={`${s.iconBox} ${isOpened ? s.opened : s.closed}`}
+                onClick={() => toggleCategory(menu.id)}
+                className={`${s.iconBox} ${
+                  openedMenus[menu.id] ? s.opened : s.closed
+                }`}
               >
                 <DownArrow />
               </div>
             </div>
-            {isOpened ? (
+            {openedMenus[menu.id] && (
               <div className={s.menuList}>
                 {menu.items.map((item) => (
                   <div key={item.id} className={s.menu}>
@@ -41,7 +49,7 @@ const Sidebar = () => {
                   </div>
                 ))}
               </div>
-            ) : null}
+            )}
           </div>
         ))}
       </div>
