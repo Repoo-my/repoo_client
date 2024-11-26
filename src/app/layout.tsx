@@ -1,3 +1,5 @@
+import Sidebar from "@/components/common/Sidebar";
+import "@/ui/styles/global.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        <Sidebar />
+        {children}
+      </body>
     </html>
   );
 }
