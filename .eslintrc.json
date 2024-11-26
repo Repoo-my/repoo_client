@@ -21,11 +21,21 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx"] }],
     "@typescript-eslint/camelcase": "off",
-    "import/extensions": ["error", "ignorePackages"],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never",
+        "js": "never",
+        "jsx": "never"
+      }
+    ],
     "no-console": "error",
     "@typescript-eslint/no-throw-literal": "warn",
     "@typescript-eslint/lines-between-class-members": "warn",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-restricted-exports": "off"
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -35,6 +45,16 @@
       "jsx": true
     },
     "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
   },
   "ignorePatterns": ["build", "dist", "public"]
 }
