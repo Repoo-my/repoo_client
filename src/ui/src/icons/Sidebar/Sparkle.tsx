@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sparkle = () => {
+function Sparkle() {
   return (
     <svg
       width="24"
@@ -21,6 +21,6 @@ const Sparkle = () => {
       </g>
     </svg>
   );
-};
+}
 
 export default Sparkle;

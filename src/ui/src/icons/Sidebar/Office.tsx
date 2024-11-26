@@ -1,6 +1,6 @@
 import React from "react";
 
-const Office = () => {
+function Office() {
   return (
     <svg
       width="24"
@@ -21,6 +21,6 @@ const Office = () => {
       </g>
     </svg>
   );
-};
+}
 
 export default Office;

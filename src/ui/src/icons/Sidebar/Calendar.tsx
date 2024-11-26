@@ -1,6 +1,6 @@
 import React from "react";
 
-const Calendar = () => {
+function Calendar() {
   return (
     <svg
       width="24"
@@ -21,6 +21,6 @@ const Calendar = () => {
       </g>
     </svg>
   );
-};
+}
 
 export default Calendar;
