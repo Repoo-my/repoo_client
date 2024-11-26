@@ -1,6 +1,24 @@
 import { font } from "@/ui/styles/font.css";
 import theme from "@/ui/styles/theme.css";
-import { style } from "@vanilla-extract/css";
+import { keyframes, style } from "@vanilla-extract/css";
+
+const rotateDown = keyframes({
+  "0%": { transform: "rotate(-180deg)" },
+  "100%": { transform: "rotate(0deg)" },
+});
+
+const rotateUp = keyframes({
+  "0%": { transform: "rotate(0deg)" },
+  "100%": { transform: "rotate(-180deg)" },
+});
+
+export const opened = style({
+  animation: `${rotateDown} 0.4s forwards`,
+});
+
+export const closed = style({
+  animation: `${rotateUp} 0.4s forwards`,
+});
 
 export const container = style({
   position: "fixed",
@@ -23,6 +41,9 @@ export const logoBox = style({
 
 export const categoryList = style({
   padding: "20px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
 });
 
 export const category = style({
@@ -46,6 +67,11 @@ export const bigText = style({
 export const line = style({
   width: "120px",
   border: `0.5px solid ${theme.gray[100]}`,
+});
+
+export const iconBox = style({
+  display: "flex",
+  alignItems: "center",
 });
 
 export const menuList = style({
