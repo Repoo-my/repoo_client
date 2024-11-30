@@ -6,6 +6,7 @@ export const container = style({
   display: "flex",
   flexDirection: "column",
   width: "100%",
+  maxWidth: "15.8rem",
   height: "204px",
   cursor: "pointer",
 });

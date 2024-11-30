@@ -5,9 +5,19 @@ import Tag from "@/components/common/Tag";
 import SearchBar from "@/components/common/SearchBar";
 import JobPosting from "@/components/common/JobPosting";
 import * as s from "./style.css";
+import { companyList } from "@/data/comapnyList";
 
 function All() {
-  const [isInterested, setIsInterested] = useState(false);
+  const [isInterested, setIsInterested] = useState<{ [key: number]: boolean }>(
+    {},
+  );
+  const saveToInterests = (id: number) => {
+    setIsInterested((posts) => ({
+      ...posts,
+      [id]: !posts[id],
+    }));
+  };
+
   return (
     <div className={s.container}>
       <p className={s.title}>지금 뜨고 있는 공고들을 확인해보세요</p>
@@ -21,13 +31,18 @@ function All() {
         <SearchBar />
       </div>
       <div className={s.postingList}>
-        <JobPosting
-          imgUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0mo1-1RPPCSd54lH3fcOeOWM1wRHxEZ3C1A&s"
-          postingTitle="제목입니다"
-          companyName="삼성전자"
-          isInterested={isInterested}
-          setIsInterested={setIsInterested}
-        />
+        {companyList.map((company) => (
+          <JobPosting
+            key={company.id}
+            imgUrl={company.imgUrl}
+            postingTitle={company.postingTitle}
+            companyName={company.companyName}
+            isInterested={!!isInterested[company.id]}
+            setIsInterested={() => {
+              saveToInterests(company.id);
+            }}
+          />
+        ))}
       </div>
     </div>
   );

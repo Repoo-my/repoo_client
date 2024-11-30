@@ -28,5 +28,9 @@ export const tagList = style({
 });
 
 export const postingList = style({
+  width: "100%",
   marginTop: "15px",
+  display: "flex",
+  gap: "24px",
+  flexWrap: "wrap",
 });
