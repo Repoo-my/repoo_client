@@ -94,6 +94,10 @@ export const menu = style({
   cursor: "pointer",
 });
 
+export const selected = style({
+  background: theme.gray[50],
+});
+
 export const smallText = style({
   ...font.p1,
   color: `${theme.black}`,

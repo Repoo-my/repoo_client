@@ -5,15 +5,19 @@ import Logo from "@/ui/src/assets/Logo";
 import DownArrow from "@/ui/src/icons/DownArrow";
 import { sidebarMenu } from "@/data/sidebarMenu";
 import * as s from "./style.css";
+import { usePathname, useRouter } from "next/navigation";
 
 interface OpenedMenus {
   [key: number]: boolean;
 }
 
 function Sidebar() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [openedMenus, setOpenedMenus] = useState<OpenedMenus>(
     Object.fromEntries(sidebarMenu.map((menu) => [menu.id, true])),
   );
+
   const toggleCategory = (menuId: number) => {
     setOpenedMenus((prev) => ({
       ...prev,
@@ -45,7 +49,13 @@ function Sidebar() {
             {openedMenus[menu.id] && (
               <div className={s.menuList}>
                 {menu.items.map((item) => (
-                  <div key={item.id} className={s.menu}>
+                  <div
+                    key={item.id}
+                    className={`${s.menu} ${
+                      pathname === item.link ? s.selected : ""
+                    }`}
+                    onClick={() => router.push(item.link)}
+                  >
                     {item.icon}
                     <p className={s.smallText}>{item.title}</p>
                   </div>

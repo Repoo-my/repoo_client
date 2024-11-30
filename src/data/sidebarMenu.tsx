@@ -10,8 +10,8 @@ export const sidebarMenu = [
     id: 1,
     title: "채용 정보",
     items: [
-      { id: 11, title: "전체공고", icon: <Menu />, link: "/jobs/all" },
-      { id: 12, title: "맞춤공고", icon: <Sparkle />, link: "/jobs/custom" },
+      { id: 11, title: "전체공고", icon: <Menu />, link: "/" },
+      { id: 12, title: "맞춤공고", icon: <Sparkle />, link: "/custom" },
     ],
   },
   {
