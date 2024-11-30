@@ -21,9 +21,8 @@ export const closed = style({
 });
 
 export const container = style({
-  position: "fixed",
   display: "flex",
-  maxWidth: "320px",
+  maxWidth: "280px",
   height: "100vh",
   borderRight: `1px solid ${theme.gray[100]}`,
   background: `${theme.white}`,

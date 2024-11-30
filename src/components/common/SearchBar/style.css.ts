@@ -9,7 +9,7 @@ export const searchBar = style({
   border: `1px solid ${theme.gray[100]}`,
   background: theme.white,
   gap: "8px",
-  width: "360px",
+  width: "320px",
   ...font.p3,
   "::placeholder": {
     color: theme.gray[300],
