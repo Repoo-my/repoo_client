@@ -3,22 +3,19 @@ import React from "react";
 function DownArrow() {
   return (
     <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g id="chevron-down">
-        <path
-          id="Icon"
-          d="M16.8 9.60002L12 14.4L7.19999 9.60002"
-          stroke="#171719"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </g>
+      <path
+        d="M14.25 6.75L9 12L3.75 6.75"
+        stroke="#171719"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

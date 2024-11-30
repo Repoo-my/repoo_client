@@ -13,11 +13,11 @@ const rotateUp = keyframes({
 });
 
 export const opened = style({
-  animation: `${rotateDown} 0.4s forwards`,
+  animation: `${rotateDown} 0.2s forwards`,
 });
 
 export const closed = style({
-  animation: `${rotateUp} 0.4s forwards`,
+  animation: `${rotateUp} 0.2s forwards`,
 });
 
 export const container = style({
