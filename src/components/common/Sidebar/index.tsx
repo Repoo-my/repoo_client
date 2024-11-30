@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Logo from "@/ui/src/assets/Logo";
 import DownArrow from "@/ui/src/icons/DownArrow";
 import { sidebarMenu } from "@/data/sidebarMenu";
+import { usePathname, useRouter } from "next/navigation";
 import * as s from "./style.css";
 
 interface OpenedMenus {
@@ -11,9 +12,12 @@ interface OpenedMenus {
 }
 
 function Sidebar() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [openedMenus, setOpenedMenus] = useState<OpenedMenus>(
     Object.fromEntries(sidebarMenu.map((menu) => [menu.id, true])),
   );
+
   const toggleCategory = (menuId: number) => {
     setOpenedMenus((prev) => ({
       ...prev,
@@ -45,7 +49,16 @@ function Sidebar() {
             {openedMenus[menu.id] && (
               <div className={s.menuList}>
                 {menu.items.map((item) => (
-                  <div key={item.id} className={s.menu}>
+                  <div
+                    key={item.id}
+                    role="button"
+                    tabIndex={0}
+                    className={`${s.menu} ${pathname === item.link ? s.selected : ""}`}
+                    onClick={() => router.push(item.link)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") router.push(item.link); // Enter 키로 클릭 이벤트 실행
+                    }}
+                  >
                     {item.icon}
                     <p className={s.smallText}>{item.title}</p>
                   </div>

@@ -32,6 +32,7 @@ const theme = createGlobalTheme(":root", {
   },
   white: "#FFFFFF",
   black: "#171719",
+  stressRed: "#F73435",
 });
 
 export default theme;

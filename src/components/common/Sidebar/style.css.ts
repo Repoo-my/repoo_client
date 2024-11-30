@@ -13,17 +13,16 @@ const rotateUp = keyframes({
 });
 
 export const opened = style({
-  animation: `${rotateDown} 0.4s forwards`,
+  animation: `${rotateDown} 0.2s forwards`,
 });
 
 export const closed = style({
-  animation: `${rotateUp} 0.4s forwards`,
+  animation: `${rotateUp} 0.2s forwards`,
 });
 
 export const container = style({
-  position: "fixed",
   display: "flex",
-  maxWidth: "320px",
+  maxWidth: "280px",
   height: "100vh",
   borderRight: `1px solid ${theme.gray[100]}`,
   background: `${theme.white}`,
@@ -93,6 +92,10 @@ export const menu = style({
     background: `${theme.gray[50]}`,
   },
   cursor: "pointer",
+});
+
+export const selected = style({
+  background: theme.gray[50],
 });
 
 export const smallText = style({

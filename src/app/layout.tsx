@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
+      <body style={{ display: "flex" }}>
         <Sidebar />
         {children}
       </body>
