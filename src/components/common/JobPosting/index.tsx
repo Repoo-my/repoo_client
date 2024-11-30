@@ -1,7 +1,8 @@
 import React from "react";
-import * as s from "./style.css";
 import Bookmark from "@/ui/src/icons/BookMark";
 import theme from "@/ui/styles/theme.css";
+import { useRouter } from "next/navigation";
+import * as s from "./style.css";
 
 interface JobPostingProps {
   imgUrl: string;
@@ -18,8 +19,18 @@ function JobPosting({
   isInterested,
   setIsInterested,
 }: JobPostingProps) {
+  const router = useRouter();
   return (
-    <div className={s.container}>
+    <div
+      className={s.container}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          router.push(`/`);
+        }
+      }}
+    >
       <div
         className={s.companyImage}
         style={{
@@ -27,9 +38,16 @@ function JobPosting({
         }}
       >
         <div
+          role="button"
+          tabIndex={0}
           className={s.bookmark}
           onClick={() => {
             setIsInterested(!isInterested);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setIsInterested(!isInterested);
+            }
           }}
         >
           <Bookmark color={isInterested ? theme.stressRed : theme.gray[400]} />

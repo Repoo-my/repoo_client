@@ -1,6 +1,6 @@
 import React from "react";
 
-const Bookmark = ({ color }: { color: string }) => {
+function Bookmark({ color }: { color: string }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,6 +15,6 @@ const Bookmark = ({ color }: { color: string }) => {
       />
     </svg>
   );
-};
+}
 
 export default Bookmark;

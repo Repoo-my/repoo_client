@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Logo from "@/ui/src/assets/Logo";
 import DownArrow from "@/ui/src/icons/DownArrow";
 import { sidebarMenu } from "@/data/sidebarMenu";
-import * as s from "./style.css";
 import { usePathname, useRouter } from "next/navigation";
+import * as s from "./style.css";
 
 interface OpenedMenus {
   [key: number]: boolean;
@@ -51,10 +51,13 @@ function Sidebar() {
                 {menu.items.map((item) => (
                   <div
                     key={item.id}
-                    className={`${s.menu} ${
-                      pathname === item.link ? s.selected : ""
-                    }`}
+                    role="button"
+                    tabIndex={0}
+                    className={`${s.menu} ${pathname === item.link ? s.selected : ""}`}
                     onClick={() => router.push(item.link)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") router.push(item.link); // Enter 키로 클릭 이벤트 실행
+                    }}
                   >
                     {item.icon}
                     <p className={s.smallText}>{item.title}</p>

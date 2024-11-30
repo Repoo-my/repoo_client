@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import Tag from "@/components/common/Tag";
 import SearchBar from "@/components/common/SearchBar";
 import JobPosting from "@/components/common/JobPosting";
-import * as s from "./style.css";
 import { companyList } from "@/data/comapnyList";
+import * as s from "./style.css";
 
 function All() {
   const [isInterested, setIsInterested] = useState<{ [key: number]: boolean }>(
