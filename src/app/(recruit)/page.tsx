@@ -6,12 +6,16 @@ import SearchBar from "@/components/recruit/SearchBar";
 import JobPosting from "@/components/recruit/JobPosting";
 import OccupationsModal from "@/components/recruit/OccupationsModal";
 import { companies } from "@/data/companies";
+import useModal from "@/hooks/useModal";
 import * as s from "./style.css";
 
 function All() {
+  const filters = ["분야 전체", "경력 전체", "지역", "기술 스택"];
   const [isInterested, setIsInterested] = useState<{ [key: number]: boolean }>(
     {},
   );
+
+  const { isOpen, openModal, closeModal } = useModal();
   const saveToInterests = (id: number) => {
     setIsInterested((posts) => ({
       ...posts,
@@ -24,11 +28,18 @@ function All() {
       <p className={s.title}>지금 뜨고 있는 공고들을 확인해보세요</p>
       <div className={s.filterBar}>
         <div className={s.tagList}>
-          <Tag title="분야 전체" />
-          <OccupationsModal />
-          <Tag title="경력 전체" />
-          <Tag title="지역" />
-          <Tag title="기술 스택" />
+          {filters.map((filter) => (
+            <div key={filter}>
+              <Tag title={filter} onClick={() => openModal(filter)} />
+              {isOpen(filter) ?? (
+                <OccupationsModal
+                  closeModal={() => {
+                    closeModal(filter);
+                  }}
+                />
+              )}
+            </div>
+          ))}
         </div>
         <SearchBar />
       </div>

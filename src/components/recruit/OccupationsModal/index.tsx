@@ -3,9 +3,10 @@ import X from "@/ui/src/icons/X";
 import Unchcked from "@/ui/src/icons/Unchcked";
 import Checked from "@/ui/src/icons/Checked";
 import { occupations } from "@/data/occupations";
+import { IModal } from "@/types/IModal";
 import * as s from "./style.css";
 
-function OccupationsModal() {
+function OccupationsModal({ closeModal }: IModal) {
   const [isSelected, setIsSelected] = useState<{ [key: string]: boolean }>({});
   const filterOccupations = (id: string) => {
     if (id === "모든 직군") {
@@ -23,7 +24,7 @@ function OccupationsModal() {
     <div className={s.container}>
       <div className={s.header}>
         <p className={s.title}>직군</p>
-        <X />
+        <X onClick={closeModal} />
       </div>
       <div className={s.occupationList}>
         {occupations.map((occupation) => (

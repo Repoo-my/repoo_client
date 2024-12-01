@@ -1,6 +1,10 @@
 import React from "react";
 
-function X() {
+interface OwnProps {
+  onClick: () => void;
+}
+
+function X({ onClick }: OwnProps) {
   return (
     <svg
       width="28"
@@ -9,6 +13,7 @@ function X() {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       style={{ cursor: "pointer" }}
+      onClick={onClick}
     >
       <path
         d="M7 21L21 7M7 7L21 21"

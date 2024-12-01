@@ -4,11 +4,12 @@ import * as s from "./style.css";
 
 interface TagProps {
   title: string;
+  onClick: () => void;
 }
 
-function Tag({ title }: TagProps) {
+function Tag({ title, onClick }: TagProps) {
   return (
-    <div className={s.container}>
+    <div className={s.container} onClick={onClick}>
       <p>{title}</p>
       <DownArrow />
     </div>
