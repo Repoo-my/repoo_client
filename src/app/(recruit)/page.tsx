@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import Tag from "@/components/common/Tag";
-import SearchBar from "@/components/common/SearchBar";
-import JobPosting from "@/components/common/JobPosting";
+import Tag from "@/components/recruit/Tag";
+import SearchBar from "@/components/recruit/SearchBar";
+import JobPosting from "@/components/recruit/JobPosting";
 import { companyList } from "@/data/comapnyList";
 import * as s from "./style.css";
 
