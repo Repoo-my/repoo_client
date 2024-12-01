@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import Tag from "@/components/recruit/Tag";
 import SearchBar from "@/components/recruit/SearchBar";
 import JobPosting from "@/components/recruit/JobPosting";
-import { companyList } from "@/data/comapnyList";
+import OccupationsModal from "@/components/recruit/OccupationsModal";
+import { companies } from "@/data/companies";
 import * as s from "./style.css";
 
 function All() {
@@ -24,6 +25,7 @@ function All() {
       <div className={s.filterBar}>
         <div className={s.tagList}>
           <Tag title="분야 전체" />
+          <OccupationsModal />
           <Tag title="경력 전체" />
           <Tag title="지역" />
           <Tag title="기술 스택" />
@@ -31,7 +33,7 @@ function All() {
         <SearchBar />
       </div>
       <div className={s.postingList}>
-        {companyList.map((company) => (
+        {companies.map((company) => (
           <JobPosting
             key={company.id}
             imgUrl={company.imgUrl}
