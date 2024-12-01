@@ -27,21 +27,20 @@ function OccupationsModal() {
       </div>
       <div className={s.occupationList}>
         {occupations.map((occupation) => (
-          <div key={occupation.title} className={s.occupation}>
+          <div
+            role="button"
+            tabIndex={0}
+            onKeyDown={() => {
+              filterOccupations(occupation.title);
+            }}
+            onClick={() => {
+              filterOccupations(occupation.title);
+            }}
+            key={occupation.title}
+            className={s.occupation}
+          >
             <p className={s.name}>{occupation.title}</p>
-            <div
-              role="button"
-              tabIndex={0}
-              onKeyDown={() => {
-                filterOccupations(occupation.title);
-              }}
-              className={s.checkBox}
-              onClick={() => {
-                filterOccupations(occupation.title);
-              }}
-            >
-              {isSelected[occupation.title] ? <Checked /> : <Unchcked />}
-            </div>
+            {isSelected[occupation.title] ? <Checked /> : <Unchcked />}
           </div>
         ))}
       </div>

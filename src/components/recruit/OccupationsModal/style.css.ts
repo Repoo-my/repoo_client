@@ -36,13 +36,10 @@ export const occupation = style({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
+  cursor: "pointer",
 });
 
 export const name = style({
   ...font.H5,
   color: "#000",
-});
-
-export const checkBox = style({
-  cursor: "pointer",
 });
