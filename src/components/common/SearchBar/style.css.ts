@@ -16,6 +16,7 @@ export const searchBar = style({
 export const input = style({
   ...font.p3,
   width: "100%",
+  color: theme.black,
   "::placeholder": {
     color: theme.gray[300],
   },
