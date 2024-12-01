@@ -30,8 +30,17 @@ function All() {
         <div className={s.tagList}>
           {filters.map((filter) => (
             <div key={filter}>
-              <Tag title={filter} onClick={() => openModal(filter)} />
-              {isOpen(filter) ?? (
+              <Tag
+                title={filter}
+                onClick={() => {
+                  if (isOpen(filter)) {
+                    closeModal(filter);
+                  } else {
+                    openModal(filter);
+                  }
+                }}
+              />
+              {isOpen(filter) && (
                 <OccupationsModal
                   closeModal={() => {
                     closeModal(filter);

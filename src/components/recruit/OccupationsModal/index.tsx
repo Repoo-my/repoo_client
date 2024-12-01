@@ -55,7 +55,7 @@ function OccupationsModal({ closeModal }: IModal) {
         >
           초기화
         </button>
-        <button type="button" className={s.reply}>
+        <button type="button" className={s.reply} onClick={closeModal}>
           적용
         </button>
       </div>

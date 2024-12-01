@@ -8,8 +8,7 @@ const useModal = () => {
   const [modals, setModals] = useState<Modals>({});
 
   const openModal = (key: string) => {
-    setModals((prev) => ({
-      ...prev,
+    setModals(() => ({
       [key]: true,
     }));
   };

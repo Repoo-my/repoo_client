@@ -9,7 +9,7 @@ interface TagProps {
 
 function Tag({ title, onClick }: TagProps) {
   return (
-    <div className={s.container} onClick={onClick}>
+    <div className={s.container} onClick={onClick} onKeyDown={onClick}>
       <p>{title}</p>
       <DownArrow />
     </div>
