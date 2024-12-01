@@ -29,6 +29,7 @@ export const occupationList = style({
   flexDirection: "column",
   height: "280px",
   overflowY: "auto",
+  borderBottom: `1px solid ${theme.gray[100]}`,
 });
 
 export const occupation = style({
@@ -42,4 +43,27 @@ export const occupation = style({
 export const name = style({
   ...font.H5,
   color: "#000",
+});
+
+export const buttons = style({
+  width: "100%",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+});
+
+export const reset = style({
+  padding: "8px 14px",
+  background: theme.white,
+  color: theme.black,
+  borderRadius: "8px",
+  border: `1px solid ${theme.gray[100]}`,
+});
+
+export const reply = style({
+  padding: "8px 16px",
+  background: theme.gray[600],
+  borderRadius: "8px",
+  color: theme.white,
+  ...font.btn2,
 });

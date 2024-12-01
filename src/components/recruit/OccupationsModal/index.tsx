@@ -44,6 +44,20 @@ function OccupationsModal() {
           </div>
         ))}
       </div>
+      <div className={s.buttons}>
+        <button
+          type="button"
+          className={s.reset}
+          onClick={() => {
+            setIsSelected(() => ({}));
+          }}
+        >
+          초기화
+        </button>
+        <button type="button" className={s.reply}>
+          적용
+        </button>
+      </div>
     </div>
   );
 }
