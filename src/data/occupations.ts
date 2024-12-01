@@ -1,4 +1,5 @@
-export const occupationList = [
+export const occupations = [
+  { title: "모든 직군" },
   { title: "소프트웨어 엔지니어" },
   { title: "웹 개발자" },
   { title: "서버 개발자" },
