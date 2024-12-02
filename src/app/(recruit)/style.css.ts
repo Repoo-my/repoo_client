@@ -1,4 +1,5 @@
 import { font } from "@/ui/styles/font.css";
+import theme from "@/ui/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
 export const container = style({
@@ -11,8 +12,8 @@ export const container = style({
 });
 
 export const title = style({
-  ...font.H2,
-  color: "#0A0A0A",
+  ...font.H5,
+  color: theme.black,
 });
 
 export const filterBar = style({
