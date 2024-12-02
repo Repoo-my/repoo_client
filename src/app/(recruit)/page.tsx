@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import Tag from "@/components/recruit/Tag";
 import SearchBar from "@/components/recruit/SearchBar";
 import JobPosting from "@/components/recruit/JobPosting";
-import OccupationsModal from "@/components/recruit/OccupationsModal";
+import OccupationsModal from "@/components/recruit/Modals/OccupationsModal";
 import { companies } from "@/data/companies";
 import useModal from "@/hooks/useModal";
+import CareerYearsModal from "@/components/recruit/Modals/CareerYearsModal";
 import * as s from "./style.css";
 
 function All() {
@@ -21,6 +22,30 @@ function All() {
       ...posts,
       [id]: !posts[id],
     }));
+  };
+
+  const renderModal = (filter: string) => {
+    switch (filter) {
+      case "분야 전체":
+        return (
+          <OccupationsModal
+            closeModal={() => {
+              closeModal(filter);
+            }}
+          />
+        );
+      case "경력 전체":
+        return (
+          <CareerYearsModal
+            closeModal={() => {
+              closeModal(filter);
+            }}
+          />
+        );
+
+      default:
+        return null;
+    }
   };
 
   return (
@@ -40,13 +65,7 @@ function All() {
                   }
                 }}
               />
-              {isOpen(filter) && (
-                <OccupationsModal
-                  closeModal={() => {
-                    closeModal(filter);
-                  }}
-                />
-              )}
+              {isOpen(filter) && renderModal(filter)}
             </div>
           ))}
         </div>

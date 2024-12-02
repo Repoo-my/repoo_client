@@ -7,6 +7,7 @@ export const container = style({
   padding: "22px 20px",
   width: "26.25%",
   background: theme.white,
+  top: "26%",
   zIndex: "3",
   borderRadius: "16px",
   boxShadow: `0px 4px 30px 10px rgba(0, 0, 0, 0.06)`,

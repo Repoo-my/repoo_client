@@ -20,6 +20,7 @@ function OccupationsModal({ closeModal }: IModal) {
       }));
     }
   };
+
   return (
     <div className={s.container}>
       <div className={s.header}>
