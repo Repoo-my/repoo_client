@@ -2,10 +2,9 @@ import { font } from "@/ui/styles/font.css";
 import { style } from "@vanilla-extract/css";
 
 export const container = style({
-  padding: "120px 52px",
+  padding: "120px 52px 10px",
   width: "100%",
   height: "100vh",
-  overflowY: "auto",
   display: "flex",
   flexDirection: "column",
 });
@@ -33,4 +32,5 @@ export const postingList = style({
   display: "flex",
   gap: "24px",
   flexWrap: "wrap",
+  overflowY: "auto",
 });
