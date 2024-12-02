@@ -8,6 +8,7 @@ import OccupationsModal from "@/components/recruit/Modals/OccupationsModal";
 import { companies } from "@/data/companies";
 import useModal from "@/hooks/useModal";
 import CareerYearsModal from "@/components/recruit/Modals/CareerYearsModal";
+import RegionsModal from "@/components/recruit/Modals/RegionsModal";
 import * as s from "./style.css";
 
 function All() {
@@ -37,6 +38,14 @@ function All() {
       case "경력 전체":
         return (
           <CareerYearsModal
+            closeModal={() => {
+              closeModal(filter);
+            }}
+          />
+        );
+      case "지역":
+        return (
+          <RegionsModal
             closeModal={() => {
               closeModal(filter);
             }}
