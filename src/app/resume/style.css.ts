@@ -13,7 +13,6 @@ export const container = style({
 
 export const title = style({
   ...font.H2,
-  marginBottom: "24px",
 });
 
 export const headerContainer = style({
@@ -25,23 +24,7 @@ export const headerContainer = style({
 
 export const actionContainer = style({
   display: "flex",
-  justifyContent: "flex-end",
-  marginBottom: "12px",
   gap: "12px",
-});
-
-export const uploadButton = style({
-  ...font.btn2,
-  padding: "8px 16px",
-  border: `1px solid ${theme.gray[100]}`,
-  borderRadius: "8px",
-  cursor: "pointer",
-  display: "flex",
-  alignItems: "center",
-  gap: "8px",
-  ":hover": {
-    backgroundColor: theme.gray[50],
-  },
 });
 
 export const createButton = style({
@@ -50,7 +33,7 @@ export const createButton = style({
   border: "none",
   borderRadius: "8px",
   backgroundColor: theme.gray[600],
-  color: "#fff",
+  color: theme.white,
   cursor: "pointer",
   ":hover": {
     backgroundColor: theme.gray[500],
@@ -85,7 +68,7 @@ export const resumeDate = style({
 export const actionLinks = style({
   display: "flex",
   alignItems: "center",
-  gap: "12px",
+  gap: "15px",
   opacity: 0,
   transition: "opacity 0.2s ease",
   ":hover": {
@@ -99,15 +82,15 @@ export const actionLinks = style({
 });
 
 export const downloadLink = style({
-  fontSize: "14px",
-  color: theme.black,
+  ...font.p2,
+  color: theme.gray[600],
   cursor: "pointer",
   background: "none",
   border: "none",
 });
 
 export const deleteLink = style({
-  fontSize: "14px",
+  ...font.p2,
   color: theme.stressRed,
   cursor: "pointer",
   background: "none",

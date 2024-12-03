@@ -1,3 +1,4 @@
+import Button from "@/components/common/Button";
 import Upload from "@/ui/src/icons/Upload";
 import * as s from "./style.css";
 
@@ -7,13 +8,11 @@ function Resume() {
       <div className={s.headerContainer}>
         <h1 className={s.title}>나의 이력서를 관리할 수 있어요</h1>
         <div className={s.actionContainer}>
-          <button type="button" className={s.uploadButton}>
+          <Button type="white">
             <Upload />
             파일 업로드
-          </button>
-          <button type="button" className={s.createButton}>
-            이력서 작성하기
-          </button>
+          </Button>
+          <Button type="black">이력서 작성하기</Button>
         </div>
       </div>
       <div className={s.resumeList}>
