@@ -52,19 +52,3 @@ export const buttons = style({
   justifyContent: "space-between",
   alignItems: "center",
 });
-
-export const reset = style({
-  padding: "8px 14px",
-  background: theme.white,
-  color: theme.black,
-  borderRadius: "8px",
-  border: `1px solid ${theme.gray[100]}`,
-});
-
-export const reply = style({
-  padding: "8px 16px",
-  background: theme.gray[600],
-  borderRadius: "8px",
-  color: theme.white,
-  ...font.btn2,
-});

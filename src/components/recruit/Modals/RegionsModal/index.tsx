@@ -4,6 +4,7 @@ import Unchcked from "@/ui/src/icons/Unchcked";
 import Checked from "@/ui/src/icons/Checked";
 import { IModal } from "@/types/IModal";
 import { regions } from "@/data/regions";
+import Button from "@/components/common/Button";
 import * as s from "./style.css";
 
 function RegionsModal({ closeModal }: IModal) {
@@ -41,18 +42,8 @@ function RegionsModal({ closeModal }: IModal) {
         ))}
       </div>
       <div className={s.buttons}>
-        <button
-          type="button"
-          className={s.reset}
-          onClick={() => {
-            setIsSelected(() => ({}));
-          }}
-        >
-          초기화
-        </button>
-        <button type="button" className={s.reply} onClick={closeModal}>
-          적용
-        </button>
+        <Button type="white">초기화</Button>
+        <Button type="black">적용</Button>
       </div>
     </div>
   );

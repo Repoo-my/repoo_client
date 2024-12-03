@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { IModal } from "@/types/IModal";
 import X from "@/ui/src/icons/X";
 import { techStacks } from "@/data/techStacks";
+import Button from "@/components/common/Button";
 import * as s from "./style.css";
 import SearchBar from "../../SearchBar";
 
@@ -46,12 +47,8 @@ function TechStacksModal({ closeModal }: IModal) {
         ))}
       </div>
       <div className={s.buttons}>
-        <button type="button" className={s.reset}>
-          초기화
-        </button>
-        <button type="button" className={s.reply} onClick={closeModal}>
-          적용
-        </button>
+        <Button type="white">초기화</Button>
+        <Button type="black">적용</Button>
       </div>
     </div>
   );
