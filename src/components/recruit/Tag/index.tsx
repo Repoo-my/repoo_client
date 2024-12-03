@@ -9,7 +9,17 @@ interface TagProps {
 
 function Tag({ title, onClick }: TagProps) {
   return (
-    <div className={s.container} onClick={onClick} onKeyDown={onClick}>
+    <div
+      role="button"
+      tabIndex={0}
+      className={s.container}
+      onClick={onClick}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          onClick();
+        }
+      }}
+    >
       <p>{title}</p>
       <DownArrow />
     </div>
