@@ -1,5 +1,5 @@
 import React from "react";
-import Bookmark from "@/ui/src/icons/BookMark";
+import Bookmark from "@/ui/src/icons/Bookmark";
 import theme from "@/ui/styles/theme.css";
 import { useRouter } from "next/navigation";
 import * as s from "./style.css";
