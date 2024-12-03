@@ -9,6 +9,7 @@ export const container = style({
   maxWidth: "15.8rem",
   height: "204px",
   cursor: "pointer",
+  wordWrap: "break-word",
 });
 
 export const companyImage = style({

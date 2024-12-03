@@ -1,4 +1,4 @@
-export const companyList = [
+export const companies = [
   {
     id: 1,
     imgUrl: "https://via.placeholder.com/150?text=Company1",
