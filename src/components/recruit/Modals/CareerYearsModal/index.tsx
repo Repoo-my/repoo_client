@@ -27,6 +27,7 @@ function CareerYearsModal({ closeModal }: IModal) {
     if (minValue === 0) {
       return `신입 ~ ${maxValue}년`;
     }
+    return `${minValue}년 ~ ${maxValue}년`;
   };
 
   return (
