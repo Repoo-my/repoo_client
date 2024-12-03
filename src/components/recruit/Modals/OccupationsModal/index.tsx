@@ -25,7 +25,7 @@ function OccupationsModal({ closeModal }: IModal) {
     <div className={s.container}>
       <div className={s.header}>
         <p className={s.title}>직군</p>
-        <X onClick={closeModal} />
+        <X onClick={closeModal} size={28} />
       </div>
       <div className={s.occupationList}>
         {occupations.map((occupation) => (

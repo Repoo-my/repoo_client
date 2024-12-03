@@ -88,7 +88,7 @@ function All() {
             </div>
           ))}
         </div>
-        <SearchBar placeholder="검색어를 입력해 주세요" />
+        <SearchBar placeholder="검색어를 입력해 주세요" width="320px" />
       </div>
       <div className={s.postingList}>
         {companies.map((company) => (

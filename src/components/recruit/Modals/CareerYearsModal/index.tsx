@@ -20,9 +20,11 @@ function CareerYearsModal({ closeModal }: IModal) {
   const formatYears = () => {
     if (minValue === 0 && maxValue === 10) {
       return "경력 전체";
-    } else if (maxValue === 10) {
+    }
+    if (maxValue === 10) {
       return `${minValue}년 ~ 10년 이상`;
-    } else if (minValue === 0) {
+    }
+    if (minValue === 0) {
       return `신입 ~ ${maxValue}년`;
     }
   };
@@ -31,7 +33,7 @@ function CareerYearsModal({ closeModal }: IModal) {
     <div className={s.container}>
       <div className={s.header}>
         <p className={s.title}>경력</p>
-        <X onClick={closeModal} />
+        <X onClick={closeModal} size={28} />
       </div>
       <div className={s.content}>
         <div className={s.rangeLabel}>{formatYears()}</div>
