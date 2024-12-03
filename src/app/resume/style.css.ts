@@ -1,4 +1,5 @@
 import { font } from "@/ui/styles/font.css";
+import theme from "@/ui/styles/theme.css";
 import { style } from "@vanilla-extract/css";
 
 export const container = style({
@@ -8,42 +9,51 @@ export const container = style({
   overflowY: "auto",
   display: "flex",
   flexDirection: "column",
-  backgroundColor: "#fff",
 });
 
 export const title = style({
+  ...font.H2,
+  marginBottom: "24px",
+});
+
+export const headerContainer = style({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
   marginBottom: "24px",
 });
 
 export const actionContainer = style({
   display: "flex",
   justifyContent: "flex-end",
-  marginBottom: "24px",
+  marginBottom: "12px",
   gap: "12px",
 });
 
 export const uploadButton = style({
+  ...font.btn2,
   padding: "8px 16px",
-  fontSize: "14px",
-  border: "1px solid #ddd",
-  borderRadius: "4px",
-  backgroundColor: "#f9f9f9",
+  border: `1px solid ${theme.gray[100]}`,
+  borderRadius: "8px",
   cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  gap: "8px",
   ":hover": {
-    backgroundColor: "#eee",
+    backgroundColor: theme.gray[50],
   },
 });
 
 export const createButton = style({
+  ...font.btn2,
   padding: "8px 16px",
-  fontSize: "14px",
   border: "none",
-  borderRadius: "4px",
-  backgroundColor: "#333",
+  borderRadius: "8px",
+  backgroundColor: theme.gray[600],
   color: "#fff",
   cursor: "pointer",
   ":hover": {
-    backgroundColor: "#555",
+    backgroundColor: theme.gray[500],
   },
 });
 
@@ -56,47 +66,49 @@ export const resumeList = style({
 export const resumeItem = style({
   display: "flex",
   justifyContent: "space-between",
-  padding: "16px",
-  border: "1px solid #eee",
+  padding: "20px 24px",
+  border: `1px solid ${theme.gray[100]}`,
   borderRadius: "8px",
-  backgroundColor: "#fafafa",
-  ":hover": {
-    backgroundColor: "#f4f4f4",
-  },
+  position: "relative",
 });
 
 export const resumeTitle = style({
-  fontSize: "18px",
-  fontWeight: "bold",
-  marginBottom: "8px",
+  ...font.H4,
+  color: theme.black,
 });
 
 export const resumeDate = style({
-  fontSize: "12px",
-  color: "#888",
+  ...font.p2,
+  color: theme.gray[400],
 });
 
 export const actionLinks = style({
   display: "flex",
   alignItems: "center",
   gap: "12px",
+  opacity: 0,
+  transition: "opacity 0.2s ease",
+  ":hover": {
+    cursor: "pointer",
+  },
+  selectors: {
+    [`${resumeItem}:hover &`]: {
+      opacity: 1,
+    },
+  },
 });
 
 export const downloadLink = style({
   fontSize: "14px",
-  color: "#007bff",
+  color: theme.black,
   cursor: "pointer",
   background: "none",
   border: "none",
-  textDecoration: "underline",
-  ":hover": {
-    textDecoration: "none",
-  },
 });
 
 export const deleteLink = style({
   fontSize: "14px",
-  color: "#ff4d4f",
+  color: theme.stressRed,
   cursor: "pointer",
   background: "none",
   border: "none",

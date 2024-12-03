@@ -12,7 +12,7 @@ export const container = style({
 });
 
 export const title = style({
-  ...font.H5,
+  ...font.H2,
   color: theme.black,
 });
 
