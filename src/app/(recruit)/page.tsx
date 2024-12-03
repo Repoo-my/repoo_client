@@ -9,6 +9,7 @@ import { companies } from "@/data/companies";
 import useModal from "@/hooks/useModal";
 import CareerYearsModal from "@/components/recruit/Modals/CareerYearsModal";
 import RegionsModal from "@/components/recruit/Modals/RegionsModal";
+import TechStacksModal from "@/components/recruit/Modals/TechStacksModal";
 import * as s from "./style.css";
 
 function All() {
@@ -52,6 +53,15 @@ function All() {
           />
         );
 
+      case "기술 스택":
+        return (
+          <TechStacksModal
+            closeModal={() => {
+              closeModal(filter);
+            }}
+          />
+        );
+
       default:
         return null;
     }
@@ -78,7 +88,7 @@ function All() {
             </div>
           ))}
         </div>
-        <SearchBar />
+        <SearchBar placeholder="검색어를 입력해 주세요" />
       </div>
       <div className={s.postingList}>
         {companies.map((company) => (

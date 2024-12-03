@@ -10,7 +10,6 @@ export const searchBar = style({
   border: `1px solid ${theme.gray[100]}`,
   background: theme.white,
   gap: "8px",
-  width: "320px",
 });
 
 export const input = style({
