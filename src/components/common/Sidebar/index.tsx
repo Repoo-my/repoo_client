@@ -56,7 +56,7 @@ function Sidebar() {
                     className={`${s.menu} ${pathname === item.link ? s.selected : ""}`}
                     onClick={() => router.push(item.link)}
                     onKeyDown={(e) => {
-                      if (e.key === "Enter") router.push(item.link); // Enter 키로 클릭 이벤트 실행
+                      if (e.key === "Enter") router.push(item.link);
                     }}
                   >
                     {item.icon}
