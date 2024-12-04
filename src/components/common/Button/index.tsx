@@ -6,12 +6,14 @@ interface ButtonProps {
   isDisabled?: boolean;
   width?: number | string;
   children: React.ReactNode;
+  onClick: () => void;
 }
 
-function Button({ type, isDisabled, width, children }: ButtonProps) {
+function Button({ type, isDisabled, width, children, onClick }: ButtonProps) {
   return (
     <button
       type="button"
+      onClick={onClick}
       style={{ width: typeof width === "number" ? `${width}px` : width }}
       className={`${s.baseButton} ${type === "black" ? s.blackButton : s.whiteButton}`}
       disabled={isDisabled}
