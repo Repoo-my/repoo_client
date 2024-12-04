@@ -17,6 +17,7 @@ function All() {
   const [isInterested, setIsInterested] = useState<{ [key: number]: boolean }>(
     {},
   );
+  const [inputValue, setInputValue] = useState<string>("");
 
   const { isOpen, openModal, closeModal } = useModal();
   const saveToInterests = (id: number) => {
@@ -88,7 +89,13 @@ function All() {
             </div>
           ))}
         </div>
-        <SearchBar placeholder="검색어를 입력해 주세요" width="320px" />
+        <SearchBar
+          placeholder="검색어를 입력해 주세요"
+          width="320px"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyPress={(e) => e.key === "Enter"}
+        />
       </div>
       <div className={s.postingList}>
         {companies.map((company) => (
