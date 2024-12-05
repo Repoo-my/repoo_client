@@ -20,8 +20,17 @@ function Write() {
               placeholder="abcd1234@gmail.com"
             />
             <Input type="tel" label="전화번호" placeholder="010-0000-0000" />
+            <div className={s.addressGap}>
+              <div className={s.label}>주소</div>
+              <div className={s.addressFlex}>
+                <Button onClick={() => {}} type="white">
+                  주소 등록
+                </Button>
+                <div className={s.essential}>(필수)</div>
+              </div>
+            </div>
           </div>
-          <div className={s.profileImgcontainer}>
+          <div className={s.profileImgContainer}>
             <div className={s.profileImg} />
             <Button onClick={() => {}} type="white">
               <Upload />

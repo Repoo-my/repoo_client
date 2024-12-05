@@ -5,11 +5,11 @@ import { font } from "@/ui/styles/font.css";
 export const layout = style({
   display: "flex",
   flexDirection: "column",
-  gap: "4px",
+  gap: "5px",
 });
 
 export const label = style({
-  ...font.p1,
+  ...font.p2,
   color: theme.black,
 });
 
