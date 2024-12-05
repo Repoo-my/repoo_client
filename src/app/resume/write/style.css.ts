@@ -24,3 +24,30 @@ export const title = style({
     color: theme.gray[300],
   },
 });
+
+export const section = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  width: "100%",
+});
+
+export const flexContainer = style({
+  width: "100%",
+  display: "flex",
+  gap: "50px",
+});
+
+export const profileImgcontainer = style({
+  display: "flex",
+  flexDirection: "column",
+  gap: "15px",
+});
+
+export const profileImg = style({
+  height: "220px",
+  width: "180px",
+  backgroundColor: "#555",
+  borderRadius: "12px",
+  border: `1px solid ${theme.gray[200]}`,
+});

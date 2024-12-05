@@ -2,14 +2,15 @@ import * as s from "./style.css";
 
 interface InputProps {
   label: string;
+  type: string;
   placeholder: string;
 }
 
-function Input({ label, placeholder }: InputProps) {
+function Input({ label, type, placeholder }: InputProps) {
   return (
     <div className={s.layout}>
       <div className={s.label}>{label}</div>
-      <input type="text" placeholder={placeholder} className={s.input} />
+      <input type={type} placeholder={placeholder} className={s.input} />
     </div>
   );
 }
