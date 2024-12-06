@@ -68,8 +68,40 @@ export const essential = style({
   color: theme.gray[400],
 });
 
-export const addressGap = style({
+export const smallGap = style({
   display: "flex",
-  gap: "8px",
+  gap: "5px",
+  flexDirection: "column",
+});
+
+export const textarea = style({
+  ...font.p1,
+  width: "100%",
+  height: "120px",
+  padding: "12px 20px",
+  borderRadius: "8px",
+  border: `1px solid ${theme.gray[100]}`,
+  resize: "none",
+  outline: "none",
+  "::placeholder": {
+    color: theme.gray[400],
+  },
+});
+
+export const charCount = style({
+  ...font.p3,
+  display: "flex",
+  justifyContent: "flex-end",
+  color: theme.gray[200],
+});
+
+export const buttonEnd = style({
+  display: "flex",
+  justifyContent: "flex-end",
+});
+
+export const gap = style({
+  display: "flex",
+  gap: "10px",
   flexDirection: "column",
 });

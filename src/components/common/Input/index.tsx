@@ -1,7 +1,7 @@
 import * as s from "./style.css";
 
 interface InputProps {
-  label: string;
+  label?: string;
   type: string;
   placeholder: string;
 }

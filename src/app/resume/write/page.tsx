@@ -1,11 +1,77 @@
 "use client";
-import Input from "@/components/common/Input";
-import ResumeWriteLabel from "@/components/resume/write/ResumeWriteLabel";
-import Button from "@/components/common/Button";
-import Upload from "@/ui/src/icons/Upload";
+import { useState } from "react";
+import Education from "@/components/resume/write/Education";
 import * as s from "./style.css";
+import Upload from "@/ui/src/icons/Upload";
+import Button from "@/components/common/Button";
+import ResumeWriteLabel from "@/components/resume/write/ResumeWriteLabel";
+import Input from "@/components/common/Input";
+import Plus from "@/ui/src/icons/Plus";
+import Career from "@/components/resume/write/Career";
 
 function Write() {
+  const [introText, setIntroText] = useState<string>("");
+  const [education, setEducation] = useState([
+    { school: "", department: "", period: "" },
+  ]);
+  const [career, setCareer] = useState([
+    {
+      companyName: "",
+      employmentType: "",
+      department: "",
+      position: "",
+      period: "",
+      resignationReason: "",
+      jobContent: "",
+    },
+  ]);
+
+  const maxLength = 149;
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setIntroText(e.target.value);
+  };
+
+  const handleAddEducation = () => {
+    setEducation([...education, { school: "", department: "", period: "" }]);
+  };
+
+  const handleAddCareer = () => {
+    setCareer([
+      ...career,
+      {
+        companyName: "",
+        employmentType: "",
+        department: "",
+        position: "",
+        period: "",
+        resignationReason: "",
+        jobContent: "",
+      },
+    ]);
+  };
+
+  // 학력 상태 업데이트 함수
+  const handleEducationChange = (
+    index: number,
+    field: typeof Education, // field를 'Education' 타입의 필드로 제한
+    value: string,
+  ) => {
+    const updatedEducation = [...education];
+    updatedEducation[index][field] = value;
+    setEducation(updatedEducation);
+  };
+
+  const handleCareerChange = (
+    index: number,
+    field: typeof Career, // field를 'Career' 타입의 필드로 제한
+    value: string,
+  ) => {
+    const updatedCareer = [...career];
+    updatedCareer[index][field] = value;
+    setCareer(updatedCareer);
+  };
+
   return (
     <div className={s.layout}>
       <div className={s.container}>
@@ -20,7 +86,7 @@ function Write() {
               placeholder="abcd1234@gmail.com"
             />
             <Input type="tel" label="전화번호" placeholder="010-0000-0000" />
-            <div className={s.addressGap}>
+            <div className={s.smallGap}>
               <div className={s.label}>주소</div>
               <div className={s.addressFlex}>
                 <Button onClick={() => {}} type="white">
@@ -36,6 +102,79 @@ function Write() {
               <Upload />
               프로필 업로드
             </Button>
+          </div>
+        </div>
+        <div className={s.section}>
+          <ResumeWriteLabel>간단 소개글</ResumeWriteLabel>
+          <div className={s.smallGap}>
+            <textarea
+              className={s.textarea}
+              placeholder="본인을 소개하는 글을 작성해보세요!"
+              maxLength={maxLength}
+              value={introText}
+              onChange={handleInputChange}
+            />
+            <div className={s.charCount}>
+              {introText.length}/{maxLength + 1}
+            </div>
+          </div>
+          <div className={s.section}>
+            <ResumeWriteLabel>학력</ResumeWriteLabel>
+            <div className={s.gap}>
+              {education.map((edu, index) => (
+                <Education
+                  key={index}
+                  index={index}
+                  school={edu.school}
+                  department={edu.department}
+                  period={edu.period}
+                  onChange={handleEducationChange}
+                />
+              ))}
+            </div>
+            <div className={s.buttonEnd}>
+              <Button type="white" onClick={handleAddEducation}>
+                <Plus />
+                추가
+              </Button>
+            </div>
+          </div>
+          <div className={s.section}>
+            <ResumeWriteLabel>경력</ResumeWriteLabel>
+            <div className={s.gap}>
+            {career.map((car, index) => (
+              <Career
+                key={index}
+                index={index}
+                companyName={car.companyName}
+                employmentType={car.employmentType}
+                department={car.department}
+                position={car.position}
+                period={car.period}
+                resignationReason={car.resignationReason}
+                jobContent={car.jobContent}
+                onChange={handleCareerChange}
+              />
+            ))}
+            </div>
+            <div className={s.buttonEnd}>
+              <Button type="white" onClick={handleAddCareer}>
+                <Plus />
+                추가
+              </Button>
+            </div>
+          </div>
+          <div className={s.section}>
+            <ResumeWriteLabel>어휘</ResumeWriteLabel>
+            <div className={s.gap}>
+              <Input type="text" placeholder="ex) 일본어능력시험 N1" />
+            <div className={s.buttonEnd}>
+              <Button type="white" onClick={handleAddCareer}>
+                <Plus />
+                추가
+              </Button>
+            </div>
+            </div>
           </div>
         </div>
       </div>
