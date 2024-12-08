@@ -1,6 +1,6 @@
+import { font } from "@ui/styles/font.css";
+import theme from "@ui/styles/theme.css";
 import { style } from "@vanilla-extract/css";
-import { font } from "@ui/styles/font.css.ts";
-import theme from "@ui/styles/theme.css.ts";
 
 export const container = style({
   padding: "120px 52px 10px",

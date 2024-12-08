@@ -1,8 +1,12 @@
 export const jobDetails = [
   {
     id: 1,
-    companyDetail:
-      "데이터 혁신, IGAWorks 소개 아이지에이웍스(IGAWorks)는 압도적인 데이터와 플랫폼을 통해 비즈니스와 마케팅의 혁신을 이끌어 가는 종합 데이터 테크 컴퍼니입니다. 고객데이터 플랫폼에서부터 마켓 인사이트, 미디어에 이르기까지 데이터 드리븐 마케팅 전과정에 필요한 End to End Data Tech Echo System을 완성하였고 디지털 전환에 필요한 모든 플랫폼, 데이터, 서비스를 모두 제공하는 글로벌 시장 유일의 기업입니다.  기업의 1st party data를 위한 CDP(Customer Data Platform), 모바일, TV, 커머스 등 독보적인 3rd party data 제공하는 DMP(Data Management Platform), AI 기반의 데이터 드리븐 마케팅 운영을 위한 ATD(Advertiser’s trading desk) 등 클라우드 기반의 디지털 전환 및 데이터 마케팅에 관한 전방위적 비즈니스를 펼쳐나가고 있습니다.",
+    companyDetail: `
+데이터 혁신, IGAWorks 소개
+아이지에이웍스(IGAWorks)는 압도적인 데이터와 플랫폼을 통해 비즈니스와 마케팅의 혁신을 이끌어 가는 종합 데이터 테크 컴퍼니입니다. 고객데이터 플랫폼에서부터 마켓 인사이트, 미디어에 이르기까지 데이터 드리븐 마케팅 전과정에 필요한 End to End Data Tech Echo System을 완성하였고 디지털 전환에 필요한 모든 플랫폼, 데이터, 서비스를 모두 제공하는 글로벌 시장 유일의 기업입니다.
+
+기업의 1st party data를 위한 CDP(Customer Data Platform), 모바일, TV, 커머스 등 독보적인 3rd party data 제공하는 DMP(Data Management Platform), AI 기반의 데이터 드리븐 마케팅 운영을 위한 ATD(Advertiser’s trading desk) 등 클라우드 기반의 디지털 전환 및 데이터 마케팅에 관한 전방위적 비즈니스를 펼쳐나가고 있습니다.
+`,
     mainTasks: [
       { id: 1, task: "웹 프론트엔드 신규 기능 개발" },
       { id: 2, task: "웹 프론트엔드 개선 (최적화, 배포 자동화 등)" },
