@@ -9,7 +9,7 @@ function Resume() {
   const router = useRouter();
 
   const handleCreateResume = () => {
-    router("/resume/write");
+    router.push("/resume/write");
   };
 
   return (
