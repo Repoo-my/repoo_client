@@ -4,14 +4,16 @@ interface InputProps {
   label?: string;
   type: string;
   placeholder: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Input({
   label = "",
   type,
   placeholder,
+  name,
   value = "",
   onChange = () => {},
 }: InputProps) {
@@ -22,6 +24,7 @@ function Input({
         type={type}
         placeholder={placeholder}
         className={s.input}
+        name={name}
         value={value}
         onChange={onChange}
       />
@@ -31,7 +34,5 @@ function Input({
 
 Input.defaultProps = {
   label: "",
-  value: "",
-  onChange: () => {},
 };
 export default Input;

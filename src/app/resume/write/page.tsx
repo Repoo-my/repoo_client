@@ -35,6 +35,15 @@ function Write() {
       reader.readAsDataURL(file);
     }
   };
+  const [userInfo, setUserInfo] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+  }>({
+    name: "",
+    email: "",
+    phone: "",
+  });
 
   const [introText, setIntroText] = useState<string>("");
   const [education, setEducation] = useState([
@@ -55,31 +64,19 @@ function Write() {
 
   const maxLength = 149;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setIntroText(e.target.value);
+  const handleInputChange = ({
+    target: { value, name },
+  }: React.ChangeEvent<HTMLInputElement>) => {
+    setUserInfo((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  const handleAddEducation = () => {
-    setEducation([...education, { school: "", department: "", period: "" }]);
-  };
-
-  const handleAddCareer = () => {
-    setCareer([
-      ...career,
-      {
-        companyName: "",
-        employmentType: "",
-        department: "",
-        position: "",
-        period: "",
-        resignationReason: "",
-        jobContent: "",
-      },
-    ]);
-  };
-
-  const handleAddVocabulary = () => {
-    setvocabulary([...vocabulary, ""]);
+  const handleTextAreaChange = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setIntroText(value);
   };
 
   const handleEducationChange = (
@@ -90,6 +87,10 @@ function Write() {
     const updatedEducation = [...education];
     updatedEducation[index] = { ...updatedEducation[index], [field]: value };
     setEducation(updatedEducation);
+  };
+
+  const handleAddEducation = () => {
+    setEducation([...education, { school: "", department: "", period: "" }]);
   };
 
   const handleCareerChange = (
@@ -108,6 +109,23 @@ function Write() {
     setvocabulary(updatedvocabulary);
   };
 
+  const handleAddCareer = () => {
+    setCareer([
+      ...career,
+      {
+        companyName: "",
+        employmentType: "",
+        department: "",
+        position: "",
+        period: "",
+        resignationReason: "",
+        jobContent: "",
+      },
+    ]);
+  };
+  const handleAddVocabulary = () => {
+    setvocabulary([...vocabulary, ""]);
+  };
   return (
     <div className={s.layout}>
       <div className={s.container}>
@@ -115,13 +133,30 @@ function Write() {
         <div className={s.flexContainer}>
           <div className={s.section}>
             <ResumeWriteLabel>프로필</ResumeWriteLabel>
-            <Input type="text" label="이름" placeholder="이름을 입력하세요" />
+            <Input
+              type="text"
+              name="name"
+              label="이름"
+              placeholder="이름을 입력하세요"
+              value={userInfo.name}
+              onChange={handleInputChange}
+            />
             <Input
               type="email"
+              name="email"
               label="이메일"
               placeholder="abcd1234@gmail.com"
+              value={userInfo.email}
+              onChange={handleInputChange}
             />
-            <Input type="tel" label="전화번호" placeholder="010-0000-0000" />
+            <Input
+              type="tel"
+              name="phone"
+              label="전화번호"
+              placeholder="010-0000-0000"
+              value={userInfo.phone}
+              onChange={handleInputChange}
+            />
             <div className={s.smallGap}>
               <div className={s.label}>주소</div>
               <div className={s.addressFlex}>
@@ -183,7 +218,7 @@ function Write() {
               placeholder="본인을 소개하는 글을 작성해보세요!"
               maxLength={maxLength}
               value={introText}
-              onChange={handleInputChange}
+              onChange={handleTextAreaChange}
             />
             <div className={s.charCount}>
               {introText.length}/{maxLength + 1}
@@ -195,7 +230,6 @@ function Write() {
             <div className={s.gap}>
               {education.map((edu, index) => (
                 <Education
-                  key={edu.school}
                   index={index}
                   school={edu.school}
                   department={edu.department}
@@ -216,7 +250,6 @@ function Write() {
             <div className={s.gap}>
               {career.map((car, index) => (
                 <Career
-                  key={car.companyName}
                   index={index}
                   companyName={car.companyName}
                   employmentType={car.employmentType}
@@ -240,12 +273,12 @@ function Write() {
           <div className={s.section}>
             <ResumeWriteLabel>어휘</ResumeWriteLabel>
             <div className={s.gap}>
-              {vocabulary.map((skill, index) => (
+              {vocabulary.map((Voc, index) => (
                 <Input
-                  key={skill}
+                  name="Vocabulary"
                   type="text"
                   placeholder="ex) 일본어능력시험 N1"
-                  value={skill}
+                  value={Voc}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleVocabularyChange(index, e.target.value)
                   }
@@ -260,8 +293,8 @@ function Write() {
             </div>
           </div>
           <div className={s.buttonEnd}>
-            <Button width={130} size="large" type="black" onClick={() => {}}>
-            저장하기
+            <Button width={135} size="large" type="black" onClick={() => {}}>
+              저장하기
             </Button>
           </div>
         </div>
