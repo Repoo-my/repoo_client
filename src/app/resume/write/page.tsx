@@ -46,19 +46,11 @@ function Write() {
   });
 
   const [introText, setIntroText] = useState<string>("");
-  const [education, setEducation] = useState([
-    { school: "", department: "", period: "" },
+  const [education, setEducation] = useState<{ id: number; school: string; department: string; period: string; }[]>([
+    { id: 1, school: "", department: "", period: "" },
   ]);
-  const [career, setCareer] = useState([
-    {
-      companyName: "",
-      employmentType: "",
-      department: "",
-      position: "",
-      period: "",
-      resignationReason: "",
-      jobContent: "",
-    },
+  const [career, setCareer] = useState<{ id: number; companyName: string; employmentType: string; department: string; position: string; period: string; resignationReason: string; jobContent: string; }[]>([
+    { id: 1, companyName: "", employmentType: "", department: "", position: "", period: "", resignationReason: "", jobContent: "" },
   ]);
   const [vocabulary, setvocabulary] = useState<string[]>([""]);
 
@@ -90,7 +82,7 @@ function Write() {
   };
 
   const handleAddEducation = () => {
-    setEducation([...education, { school: "", department: "", period: "" }]);
+    setEducation([...education, { id: Date.now(), school: "", department: "", period: "" }]);
   };
 
   const handleCareerChange = (
@@ -112,15 +104,7 @@ function Write() {
   const handleAddCareer = () => {
     setCareer([
       ...career,
-      {
-        companyName: "",
-        employmentType: "",
-        department: "",
-        position: "",
-        period: "",
-        resignationReason: "",
-        jobContent: "",
-      },
+      { id: Date.now(), companyName: "", employmentType: "", department: "", position: "", period: "", resignationReason: "", jobContent: "" },
     ]);
   };
   const handleAddVocabulary = () => {
@@ -228,10 +212,10 @@ function Write() {
           <div className={s.section}>
             <ResumeWriteLabel>학력</ResumeWriteLabel>
             <div className={s.gap}>
-              {education.map((edu, index) => (
+              {education.map((edu) => (
                 <Education
-                  key={index}
-                  index={index}
+                  key={edu.id}
+                  index={edu.id}
                   school={edu.school}
                   department={edu.department}
                   period={edu.period}
@@ -249,10 +233,10 @@ function Write() {
           <div className={s.section}>
             <ResumeWriteLabel>경력</ResumeWriteLabel>
             <div className={s.gap}>
-              {career.map((car, index) => (
+              {career.map((car) => (
                 <Career
-                  key={index}
-                  index={index}
+                  key={car.id}
+                  index={car.id}
                   companyName={car.companyName}
                   employmentType={car.employmentType}
                   department={car.department}
@@ -277,7 +261,6 @@ function Write() {
             <div className={s.gap}>
               {vocabulary.map((Voc, index) => (
                 <Input
-                  key={index}
                   name="Vocabulary"
                   type="text"
                   placeholder="ex) 일본어능력시험 N1"
