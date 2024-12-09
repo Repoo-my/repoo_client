@@ -72,7 +72,7 @@ function Write() {
       jobContent: "",
     },
   ]);
-  const [vocabulary, setvocabulary] = useState<string[]>([""]);
+  const [vocabulary, setVocabulary] = useState<{ id: number; value: string }[]>([{ id: 1, value: "" }]);
 
   const maxLength = 149;
 
@@ -118,10 +118,11 @@ function Write() {
     setCareer(updatedCareer);
   };
 
-  const handleVocabularyChange = (index: number, value: string) => {
-    const updatedvocabulary = [...vocabulary];
-    updatedvocabulary[index] = value;
-    setvocabulary(updatedvocabulary);
+  const handleVocabularyChange = (id: number, value: string) => {
+    const updatedVocabulary = vocabulary.map((voc) =>
+      voc.id === id ? { ...voc, value } : voc
+    );
+    setVocabulary(updatedVocabulary);
   };
 
   const handleAddCareer = () => {
@@ -140,7 +141,7 @@ function Write() {
     ]);
   };
   const handleAddVocabulary = () => {
-    setvocabulary([...vocabulary, ""]);
+    setVocabulary([...vocabulary, { id: Date.now(), value: "" }]);
   };
   return (
     <div className={s.layout}>
@@ -291,14 +292,15 @@ function Write() {
           <div className={s.section}>
             <ResumeWriteLabel>어휘</ResumeWriteLabel>
             <div className={s.gap}>
-              {vocabulary.map((Voc, index) => (
+              {vocabulary.map((voc) => (
                 <Input
+                  key={voc.id}
                   name="Vocabulary"
                   type="text"
                   placeholder="ex) 일본어능력시험 N1"
-                  value={Voc}
+                  value={voc.value}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    handleVocabularyChange(index, e.target.value)
+                    handleVocabularyChange(voc.id, e.target.value)
                   }
                 />
               ))}
