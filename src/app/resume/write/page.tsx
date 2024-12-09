@@ -259,6 +259,11 @@ function Write() {
               </div>
             </div>
           </div>
+          <div className={s.buttonEnd}>
+            <Button width={130} size="large" type="black" onClick={() => {}}>
+            저장하기
+            </Button>
+          </div>
         </div>
       </div>
     </div>
