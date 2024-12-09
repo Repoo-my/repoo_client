@@ -1,15 +1,14 @@
 "use client";
+
 import { useState } from "react";
-import Education from "@/components/resume/write/Education";
-import { EducationProps } from "@/components/resume/write/Education";
-import { CareerProps } from "@/components/resume/write/Career";
-import * as s from "./style.css";
+import Education, { EducationProps } from "@/components/resume/write/Education";
+import Career, { CareerProps } from "@/components/resume/write/Career";
 import Upload from "@/ui/src/icons/Upload";
 import Button from "@/components/common/Button";
 import ResumeWriteLabel from "@/components/resume/write/ResumeWriteLabel";
 import Input from "@/components/common/Input";
 import Plus from "@/ui/src/icons/Plus";
-import Career from "@/components/resume/write/Career";
+import * as s from "./style.css";
 
 function Write() {
   const [introText, setIntroText] = useState<string>("");
@@ -64,7 +63,7 @@ function Write() {
     value: string,
   ) => {
     const updatedEducation = [...education];
-    updatedEducation[index][field] = value;
+    updatedEducation[index] = { ...updatedEducation[index], [field]: value };
     setEducation(updatedEducation);
   };
 
@@ -74,7 +73,7 @@ function Write() {
     value: string,
   ) => {
     const updatedCareer = [...career];
-    updatedCareer[index][field] = value;
+    updatedCareer[index] = { ...updatedCareer[index], [field]: value };
     setCareer(updatedCareer);
   };
 
@@ -135,7 +134,7 @@ function Write() {
             <div className={s.gap}>
               {education.map((edu, index) => (
                 <Education
-                  key={index}
+                  key={edu.school}
                   index={index}
                   school={edu.school}
                   department={edu.department}
@@ -156,7 +155,7 @@ function Write() {
             <div className={s.gap}>
               {career.map((car, index) => (
                 <Career
-                  key={index}
+                  key={car.companyName}
                   index={index}
                   companyName={car.companyName}
                   employmentType={car.employmentType}
@@ -181,11 +180,11 @@ function Write() {
             <div className={s.gap}>
               {vocabulary.map((skill, index) => (
                 <Input
-                  key={index}
+                  key={skill}
                   type="text"
                   placeholder="ex) 일본어능력시험 N1"
                   value={skill}
-                  onChange={(e) =>
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     handleVocabularyChange(index, e.target.value)
                   }
                 />

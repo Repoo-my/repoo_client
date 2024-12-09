@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as s from "./style.css";
 
 export interface CareerProps {
@@ -22,9 +22,8 @@ function Career({
   period,
   resignationReason,
   jobContent,
-  onChange, // onChange 프로퍼티가 정의된 대로 받음
+  onChange,
 }: CareerProps) {
-  // 초기값을 props로 설정하는 방식으로 변경
   const [careerData, setCareerData] = useState({
     companyName,
     employmentType,
@@ -35,14 +34,14 @@ function Career({
     jobContent,
   });
 
-  // 필드 변경 시 careerData 상태를 업데이트하고 부모에게도 변경 알림
   const handleChange =
     (field: keyof CareerProps) =>
-    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      const value = e.target.value;
+    ({
+      target: { value },
+    }: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setCareerData((prevData) => {
         const updatedData = { ...prevData, [field]: value };
-        onChange(index, field, value); // onChange 호출
+        onChange(index, field, value);
         return updatedData;
       });
     };

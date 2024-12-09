@@ -4,15 +4,34 @@ interface InputProps {
   label?: string;
   type: string;
   placeholder: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function Input({ label, type, placeholder }: InputProps) {
+function Input({
+  label = "",
+  type,
+  placeholder,
+  value = "",
+  onChange = () => {},
+}: InputProps) {
   return (
     <div className={s.layout}>
-      <div className={s.label}>{label}</div>
-      <input type={type} placeholder={placeholder} className={s.input} />
+      {label && <div className={s.label}>{label}</div>}{" "}
+      <input
+        type={type}
+        placeholder={placeholder}
+        className={s.input}
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 }
 
+Input.defaultProps = {
+  label: "",
+  value: "",
+  onChange: () => {},
+};
 export default Input;

@@ -7,13 +7,14 @@ export interface EducationProps {
   period: string;
   onChange: (index: number, field: keyof EducationProps, value: string) => void;
 }
-const Education = ({
+
+function Education({
   index,
   school,
   department,
   period,
   onChange,
-}: EducationProps) => {
+}: EducationProps) {
   const handleChange =
     (field: keyof EducationProps) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,5 +46,6 @@ const Education = ({
       />
     </div>
   );
-};
+}
+
 export default Education;
