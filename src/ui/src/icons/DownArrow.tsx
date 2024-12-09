@@ -4,13 +4,19 @@ import React from "react";
 interface DownArrowProps {
   size?: string;
   color?: string;
+  onClick?: () => void;
 }
 
-function DownArrow({ size = "18", color = theme.black }: DownArrowProps) {
+function DownArrow({
+  size = "18",
+  color = theme.black,
+  onClick,
+}: DownArrowProps) {
   return (
     <svg
       width={size}
       height={size}
+      onClick={onClick}
       viewBox="0 0 18 18"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -25,5 +31,11 @@ function DownArrow({ size = "18", color = theme.black }: DownArrowProps) {
     </svg>
   );
 }
+
+DownArrow.defaultProps = {
+  size: "20px",
+  color: theme.black,
+  onClick: () => {},
+};
 
 export default DownArrow;
