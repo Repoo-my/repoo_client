@@ -9,6 +9,8 @@ import ResumeWriteLabel from "@/components/resume/write/ResumeWriteLabel";
 import Address from "@/components/resume/write/Address";
 import Input from "@/components/common/Input";
 import Plus from "@/ui/src/icons/Plus";
+import Image from "next/image";
+import DefaultProfile from "@/ui/src/assets/Defaultprofile.png";
 import * as s from "./style.css";
 
 function Write() {
@@ -21,9 +23,7 @@ function Write() {
     setShowAddress(!showAddress);
   };
 
-  const [profileImage, setProfileImage] = useState<string | null>(
-    "https://i.pinimg.com/736x/5b/e4/88/5be488211f49fa95d0079f8b6706d144.jpg",
-  );
+  const [profileImage, setProfileImage] = useState<string | null>(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -141,8 +141,22 @@ function Write() {
           </div>
 
           <div className={s.profileImgContainer}>
-            {profileImage && (
-              <img src={profileImage} className={s.profileImg} />
+            {profileImage ? (
+              <Image
+                src={profileImage}
+                className={s.profileImg}
+                alt="프로필 이미지"
+                width={200}
+                height={240}
+              />
+            ) : (
+              <Image
+                src={DefaultProfile}
+                className={s.profileImg}
+                alt="기본 프로필 이미지"
+                width={200}
+                height={240}
+              />
             )}
             <input
               type="file"
