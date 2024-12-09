@@ -72,7 +72,9 @@ function Write() {
       jobContent: "",
     },
   ]);
-  const [vocabulary, setVocabulary] = useState<{ id: number; value: string }[]>([{ id: 1, value: "" }]);
+  const [vocabulary, setVocabulary] = useState<{ id: number; value: string }[]>(
+    [{ id: 1, value: "" }],
+  );
 
   const maxLength = 149;
 
@@ -120,7 +122,7 @@ function Write() {
 
   const handleVocabularyChange = (id: number, value: string) => {
     const updatedVocabulary = vocabulary.map((voc) =>
-      voc.id === id ? { ...voc, value } : voc
+      voc.id === id ? { ...voc, value } : voc,
     );
     setVocabulary(updatedVocabulary);
   };
