@@ -47,7 +47,6 @@ export const profileImgContainer = style({
 export const profileImg = style({
   height: "240px",
   width: "200px",
-  backgroundColor: "#555",
   borderRadius: "12px",
   border: `1px solid ${theme.gray[200]}`,
 });

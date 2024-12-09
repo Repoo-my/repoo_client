@@ -124,7 +124,10 @@ function Write() {
             </div>
           </div>
           <div className={s.profileImgContainer}>
-            <div className={s.profileImg} />
+            <img
+              src="https://i.pinimg.com/736x/5b/e4/88/5be488211f49fa95d0079f8b6706d144.jpg"
+              className={s.profileImg}
+            />
             <Button onClick={() => {}} type="white">
               <Upload />
               프로필 업로드
