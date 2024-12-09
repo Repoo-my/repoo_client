@@ -49,6 +49,7 @@ export const profileImg = style({
   width: "200px",
   borderRadius: "12px",
   border: `1px solid ${theme.gray[200]}`,
+  objectFit: "cover",
 });
 
 export const label = style({

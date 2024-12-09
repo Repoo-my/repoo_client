@@ -20,6 +20,22 @@ function Write() {
   const handleAddressToggle = () => {
     setShowAddress(!showAddress);
   };
+
+  const [profileImage, setProfileImage] = useState<string | null>(
+    "https://i.pinimg.com/736x/5b/e4/88/5be488211f49fa95d0079f8b6706d144.jpg",
+  );
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfileImage(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const [introText, setIntroText] = useState<string>("");
   const [education, setEducation] = useState([
     { school: "", department: "", period: "" },
@@ -123,17 +139,28 @@ function Write() {
               {showAddress && <Address onComplete={handleAddressComplete} />}
             </div>
           </div>
+
           <div className={s.profileImgContainer}>
-            <img
-              src="https://i.pinimg.com/736x/5b/e4/88/5be488211f49fa95d0079f8b6706d144.jpg"
-              className={s.profileImg}
+            {profileImage && (
+              <img src={profileImage} className={s.profileImg} />
+            )}
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              style={{ display: "none" }}
+              id="fileInput"
             />
-            <Button onClick={() => {}} type="white">
+            <Button
+              onClick={() => document.getElementById("fileInput")?.click()}
+              type="white"
+            >
               <Upload />
               프로필 업로드
             </Button>
           </div>
         </div>
+
         <div className={s.section}>
           <ResumeWriteLabel>간단 소개글</ResumeWriteLabel>
           <div className={s.smallGap}>
@@ -148,6 +175,7 @@ function Write() {
               {introText.length}/{maxLength + 1}
             </div>
           </div>
+
           <div className={s.section}>
             <ResumeWriteLabel>학력</ResumeWriteLabel>
             <div className={s.gap}>
@@ -194,6 +222,7 @@ function Write() {
               </Button>
             </div>
           </div>
+
           <div className={s.section}>
             <ResumeWriteLabel>어휘</ResumeWriteLabel>
             <div className={s.gap}>
