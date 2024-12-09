@@ -1,6 +1,6 @@
 import * as s from "./style.css";
 
-interface EducationProps {
+export interface EducationProps {
   index: number;
   school: string;
   department: string;
@@ -15,7 +15,8 @@ const Education = ({
   onChange,
 }: EducationProps) => {
   const handleChange =
-    (field: keyof EducationProps) => (e: React.ChangeEvent<HTMLInputElement>) => {
+    (field: keyof EducationProps) =>
+    (e: React.ChangeEvent<HTMLInputElement>) => {
       onChange(index, field, e.target.value);
     };
 
@@ -45,5 +46,4 @@ const Education = ({
     </div>
   );
 };
-
 export default Education;

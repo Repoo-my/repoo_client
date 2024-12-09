@@ -33,9 +33,8 @@ export const companyBox = style({
   padding: "16px",
   flexDirection: "column",
   gap: "4px",
-  backgroundColor:theme.gray[50],
-  borderRadius:"8px",
-
+  backgroundColor: theme.gray[50],
+  borderRadius: "8px",
 });
 
 export const title = style({
@@ -49,7 +48,7 @@ export const content = style({
   backgroundColor: "transparent",
   resize: "none",
   outline: "none",
-  height:"auto",
+  height: "auto",
   "::placeholder": {
     color: theme.gray[400],
   },

@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import Education from "@/components/resume/write/Education";
+import { EducationProps } from "@/components/resume/write/Education";
+import { CareerProps } from "@/components/resume/write/Career";
 import * as s from "./style.css";
 import Upload from "@/ui/src/icons/Upload";
 import Button from "@/components/common/Button";
@@ -25,6 +27,7 @@ function Write() {
       jobContent: "",
     },
   ]);
+  const [vocabulary, setvocabulary] = useState<string[]>([""]);
 
   const maxLength = 149;
 
@@ -51,10 +54,13 @@ function Write() {
     ]);
   };
 
-  // 학력 상태 업데이트 함수
+  const handleAddVocabulary = () => {
+    setvocabulary([...vocabulary, ""]);
+  };
+
   const handleEducationChange = (
     index: number,
-    field: typeof Education, // field를 'Education' 타입의 필드로 제한
+    field: keyof EducationProps,
     value: string,
   ) => {
     const updatedEducation = [...education];
@@ -64,12 +70,18 @@ function Write() {
 
   const handleCareerChange = (
     index: number,
-    field: typeof Career, // field를 'Career' 타입의 필드로 제한
+    field: keyof CareerProps,
     value: string,
   ) => {
     const updatedCareer = [...career];
     updatedCareer[index][field] = value;
     setCareer(updatedCareer);
+  };
+
+  const handleVocabularyChange = (index: number, value: string) => {
+    const updatedvocabulary = [...vocabulary];
+    updatedvocabulary[index] = value;
+    setvocabulary(updatedvocabulary);
   };
 
   return (
@@ -142,20 +154,20 @@ function Write() {
           <div className={s.section}>
             <ResumeWriteLabel>경력</ResumeWriteLabel>
             <div className={s.gap}>
-            {career.map((car, index) => (
-              <Career
-                key={index}
-                index={index}
-                companyName={car.companyName}
-                employmentType={car.employmentType}
-                department={car.department}
-                position={car.position}
-                period={car.period}
-                resignationReason={car.resignationReason}
-                jobContent={car.jobContent}
-                onChange={handleCareerChange}
-              />
-            ))}
+              {career.map((car, index) => (
+                <Career
+                  key={index}
+                  index={index}
+                  companyName={car.companyName}
+                  employmentType={car.employmentType}
+                  department={car.department}
+                  position={car.position}
+                  period={car.period}
+                  resignationReason={car.resignationReason}
+                  jobContent={car.jobContent}
+                  onChange={handleCareerChange}
+                />
+              ))}
             </div>
             <div className={s.buttonEnd}>
               <Button type="white" onClick={handleAddCareer}>
@@ -167,13 +179,23 @@ function Write() {
           <div className={s.section}>
             <ResumeWriteLabel>어휘</ResumeWriteLabel>
             <div className={s.gap}>
-              <Input type="text" placeholder="ex) 일본어능력시험 N1" />
-            <div className={s.buttonEnd}>
-              <Button type="white" onClick={handleAddCareer}>
-                <Plus />
-                추가
-              </Button>
-            </div>
+              {vocabulary.map((skill, index) => (
+                <Input
+                  key={index}
+                  type="text"
+                  placeholder="ex) 일본어능력시험 N1"
+                  value={skill}
+                  onChange={(e) =>
+                    handleVocabularyChange(index, e.target.value)
+                  }
+                />
+              ))}
+              <div className={s.buttonEnd}>
+                <Button type="white" onClick={handleAddVocabulary}>
+                  <Plus />
+                  추가
+                </Button>
+              </div>
             </div>
           </div>
         </div>

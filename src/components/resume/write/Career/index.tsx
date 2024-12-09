@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import * as s from "./style.css";
 
-interface CareerProps {
+export interface CareerProps {
   index: number;
   companyName: string;
   employmentType: string;
@@ -10,7 +10,7 @@ interface CareerProps {
   period: string;
   resignationReason: string;
   jobContent: string;
-  onChange: (index: number, field: keyof string, value: string) => void;
+  onChange: (index: number, field: keyof CareerProps, value: string) => void;
 }
 
 function Career({
@@ -22,25 +22,29 @@ function Career({
   period,
   resignationReason,
   jobContent,
+  onChange, // onChange 프로퍼티가 정의된 대로 받음
 }: CareerProps) {
+  // 초기값을 props로 설정하는 방식으로 변경
   const [careerData, setCareerData] = useState({
-    companyName: "",
-    employmentType: "",
-    department: "",
-    position: "",
-    period: "",
-    resignationReason: "",
-    jobContent: "",
+    companyName,
+    employmentType,
+    department,
+    position,
+    period,
+    resignationReason,
+    jobContent,
   });
 
+  // 필드 변경 시 careerData 상태를 업데이트하고 부모에게도 변경 알림
   const handleChange =
-    (field: string) =>
+    (field: keyof CareerProps) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const value = e.target.value;
-      setCareerData((prevData) => ({
-        ...prevData,
-        [field]: value,
-      }));
+      setCareerData((prevData) => {
+        const updatedData = { ...prevData, [field]: value };
+        onChange(index, field, value); // onChange 호출
+        return updatedData;
+      });
     };
 
   return (
@@ -86,9 +90,7 @@ function Career({
           className={s.content}
           placeholder="퇴직하신 사유를 적어주세요"
           value={careerData.resignationReason}
-          onChange={(e) => {
-            handleChange("resignationReason")(e);
-          }}
+          onChange={handleChange("resignationReason")}
         />
       </div>
       <div className={s.companyBox}>
@@ -97,9 +99,7 @@ function Career({
           className={s.content}
           placeholder="맡았던 업무 내용을 적어주세요"
           value={careerData.jobContent}
-          onChange={(e) => {
-            handleChange("jobContent")(e);
-          }}
+          onChange={handleChange("jobContent")}
         />
       </div>
     </div>
