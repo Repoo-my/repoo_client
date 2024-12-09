@@ -60,12 +60,12 @@ export const label = style({
 export const addressFlex = style({
   display: "flex",
   alignItems: "center",
-  gap: "8px",
 });
 
 export const essential = style({
   ...font.p2,
   color: theme.gray[400],
+  marginLeft: "8px",
 });
 
 export const smallGap = style({

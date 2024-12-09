@@ -6,11 +6,20 @@ import Career, { CareerProps } from "@/components/resume/write/Career";
 import Upload from "@/ui/src/icons/Upload";
 import Button from "@/components/common/Button";
 import ResumeWriteLabel from "@/components/resume/write/ResumeWriteLabel";
+import Address from "@/components/resume/write/Address";
 import Input from "@/components/common/Input";
 import Plus from "@/ui/src/icons/Plus";
 import * as s from "./style.css";
 
 function Write() {
+  const [roadAddress, setRoadAddress] = useState<string>("");
+  const [showAddress, setShowAddress] = useState<boolean>(false);
+  const handleAddressComplete = (address: string) => {
+    setRoadAddress(address);
+  };
+  const handleAddressToggle = () => {
+    setShowAddress(!showAddress);
+  };
   const [introText, setIntroText] = useState<string>("");
   const [education, setEducation] = useState([
     { school: "", department: "", period: "" },
@@ -100,10 +109,12 @@ function Write() {
             <div className={s.smallGap}>
               <div className={s.label}>주소</div>
               <div className={s.addressFlex}>
-                <Button onClick={() => {}} type="white">
-                  주소 등록
+                <div className={s.label}>{roadAddress}</div>
+                <Button onClick={handleAddressToggle} type="white">
+                  주소 검색
                 </Button>
                 <div className={s.essential}>(필수)</div>
+                {showAddress && <Address onComplete={handleAddressComplete} />}
               </div>
             </div>
           </div>
