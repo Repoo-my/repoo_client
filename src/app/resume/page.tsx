@@ -1,18 +1,29 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import Button from "@/components/common/Button";
 import Upload from "@/ui/src/icons/Upload";
 import * as s from "./style.css";
 
 function Resume() {
+  const router = useRouter();
+
+  const handleCreateResume = () => {
+    router.push("/resume/write");
+  };
+
   return (
     <div className={s.container}>
       <div className={s.headerContainer}>
         <h1 className={s.title}>나의 이력서를 관리할 수 있어요</h1>
         <div className={s.actionContainer}>
-          <Button type="white">
+          <Button onClick={() => {}} type="white">
             <Upload />
             파일 업로드
           </Button>
-          <Button type="black">이력서 작성하기</Button>
+          <Button onClick={handleCreateResume} type="black">
+            이력서 작성하기
+          </Button>
         </div>
       </div>
       <div className={s.resumeList}>

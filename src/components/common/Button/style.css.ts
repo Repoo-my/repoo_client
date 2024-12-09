@@ -31,3 +31,13 @@ export const blackButton = style({
     backgroundColor: theme.gray[500],
   },
 });
+
+export const mediumButton = style({
+  ...font.btn2,
+  padding: "8px 16px",
+});
+
+export const largeButton = style({
+  ...font.btn1,
+  padding: "12px 36px",
+});
