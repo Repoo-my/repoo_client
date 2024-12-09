@@ -1,15 +1,15 @@
 import * as s from "./style.css";
 
 export interface EducationProps {
-  index: number;
+  id: number;
   school: string;
   department: string;
   period: string;
-  onChange: (index: number, field: keyof EducationProps, value: string) => void;
+  onChange: (id: number, field: keyof EducationProps, value: string) => void;
 }
 
 function Education({
-  index,
+  id,
   school,
   department,
   period,
@@ -18,7 +18,7 @@ function Education({
   const handleChange =
     (field: keyof EducationProps) =>
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      onChange(index, field, e.target.value);
+      onChange(id, field, e.target.value);
     };
 
   return (

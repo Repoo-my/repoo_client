@@ -94,12 +94,13 @@ function Write() {
   };
 
   const handleEducationChange = (
-    index: number,
+    id: number,
     field: keyof EducationProps,
     value: string,
   ) => {
-    const updatedEducation = [...education];
-    updatedEducation[index] = { ...updatedEducation[index], [field]: value };
+    const updatedEducation = education.map((edu) =>
+      edu.id === id ? { ...edu, [field]: value } : edu,
+    );
     setEducation(updatedEducation);
   };
 
@@ -111,12 +112,13 @@ function Write() {
   };
 
   const handleCareerChange = (
-    index: number,
+    id: number,
     field: keyof CareerProps,
     value: string,
   ) => {
-    const updatedCareer = [...career];
-    updatedCareer[index] = { ...updatedCareer[index], [field]: value };
+    const updatedCareer = career.map((car) =>
+      car.id === id ? { ...car, [field]: value } : car,
+    );
     setCareer(updatedCareer);
   };
 
@@ -199,7 +201,7 @@ function Write() {
               <Image
                 src={profileImage}
                 className={s.profileImg}
-                alt="프로필 이미지"
+                alt="프로��� 이미지"
                 width={200}
                 height={240}
               />
@@ -250,7 +252,7 @@ function Write() {
               {education.map((edu) => (
                 <Education
                   key={edu.id}
-                  index={edu.id}
+                  id={edu.id}
                   school={edu.school}
                   department={edu.department}
                   period={edu.period}
@@ -271,7 +273,7 @@ function Write() {
               {career.map((car) => (
                 <Career
                   key={car.id}
-                  index={car.id}
+                  id={car.id}
                   companyName={car.companyName}
                   employmentType={car.employmentType}
                   department={car.department}
