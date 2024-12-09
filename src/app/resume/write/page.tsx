@@ -230,6 +230,7 @@ function Write() {
             <div className={s.gap}>
               {education.map((edu, index) => (
                 <Education
+                  key={index}
                   index={index}
                   school={edu.school}
                   department={edu.department}
@@ -250,6 +251,7 @@ function Write() {
             <div className={s.gap}>
               {career.map((car, index) => (
                 <Career
+                  key={index}
                   index={index}
                   companyName={car.companyName}
                   employmentType={car.employmentType}
@@ -275,6 +277,7 @@ function Write() {
             <div className={s.gap}>
               {vocabulary.map((Voc, index) => (
                 <Input
+                  key={index}
                   name="Vocabulary"
                   type="text"
                   placeholder="ex) 일본어능력시험 N1"
