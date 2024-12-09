@@ -60,6 +60,7 @@ export const label = style({
 export const addressFlex = style({
   display: "flex",
   alignItems: "center",
+  justifyContent: "start",
 });
 
 export const essential = style({

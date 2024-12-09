@@ -109,13 +109,18 @@ function Write() {
             <div className={s.smallGap}>
               <div className={s.label}>주소</div>
               <div className={s.addressFlex}>
-                <div className={s.label}>{roadAddress}</div>
+                <div
+                  className={s.label}
+                  style={roadAddress ? { marginRight: "12px" } : {}}
+                >
+                  {roadAddress}
+                </div>
                 <Button onClick={handleAddressToggle} type="white">
                   주소 검색
                 </Button>
                 <div className={s.essential}>(필수)</div>
-                {showAddress && <Address onComplete={handleAddressComplete} />}
               </div>
+              {showAddress && <Address onComplete={handleAddressComplete} />}
             </div>
           </div>
           <div className={s.profileImgContainer}>
