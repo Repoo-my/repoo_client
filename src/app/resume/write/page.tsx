@@ -46,11 +46,31 @@ function Write() {
   });
 
   const [introText, setIntroText] = useState<string>("");
-  const [education, setEducation] = useState<{ id: number; school: string; department: string; period: string; }[]>([
-    { id: 1, school: "", department: "", period: "" },
-  ]);
-  const [career, setCareer] = useState<{ id: number; companyName: string; employmentType: string; department: string; position: string; period: string; resignationReason: string; jobContent: string; }[]>([
-    { id: 1, companyName: "", employmentType: "", department: "", position: "", period: "", resignationReason: "", jobContent: "" },
+  const [education, setEducation] = useState<
+    { id: number; school: string; department: string; period: string }[]
+  >([{ id: 1, school: "", department: "", period: "" }]);
+  const [career, setCareer] = useState<
+    {
+      id: number;
+      companyName: string;
+      employmentType: string;
+      department: string;
+      position: string;
+      period: string;
+      resignationReason: string;
+      jobContent: string;
+    }[]
+  >([
+    {
+      id: 1,
+      companyName: "",
+      employmentType: "",
+      department: "",
+      position: "",
+      period: "",
+      resignationReason: "",
+      jobContent: "",
+    },
   ]);
   const [vocabulary, setvocabulary] = useState<string[]>([""]);
 
@@ -82,7 +102,10 @@ function Write() {
   };
 
   const handleAddEducation = () => {
-    setEducation([...education, { id: Date.now(), school: "", department: "", period: "" }]);
+    setEducation([
+      ...education,
+      { id: Date.now(), school: "", department: "", period: "" },
+    ]);
   };
 
   const handleCareerChange = (
@@ -104,7 +127,16 @@ function Write() {
   const handleAddCareer = () => {
     setCareer([
       ...career,
-      { id: Date.now(), companyName: "", employmentType: "", department: "", position: "", period: "", resignationReason: "", jobContent: "" },
+      {
+        id: Date.now(),
+        companyName: "",
+        employmentType: "",
+        department: "",
+        position: "",
+        period: "",
+        resignationReason: "",
+        jobContent: "",
+      },
     ]);
   };
   const handleAddVocabulary = () => {
