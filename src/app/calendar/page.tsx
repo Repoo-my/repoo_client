@@ -49,6 +49,8 @@ function Calendar() {
               left: "title",
               end: "",
             }}
+            height="100%"
+            selectable
             editable
             locale="ko"
             dayCellContent={handleDayCellContent}
