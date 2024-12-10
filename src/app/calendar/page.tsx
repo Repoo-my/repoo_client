@@ -6,14 +6,20 @@ import theme from "@/ui/styles/theme.css";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import { DayCellContentArg } from "@fullcalendar/core";
 import * as s from "./style.css";
 
 function Calendar() {
   const calendarRef = useRef<FullCalendar | null>(null);
 
+  const handleDayCellContent = (arg: DayCellContentArg) => {
+    const dayNumber = arg.dayNumberText.replace("일", "");
+    return dayNumber;
+  };
+
   return (
     <div className={s.container}>
-      <div className={s.calendar}>
+      <div className={s.left}>
         <div className={s.arrows}>
           <button type="button" className={s.reverseArrow}>
             <DownArrow
@@ -34,20 +40,21 @@ function Calendar() {
             }}
           />
         </div>
-        <FullCalendar
-          ref={calendarRef}
-          plugins={[dayGridPlugin, interactionPlugin]}
-          initialView="dayGridMonth"
-          headerToolbar={{
-            left: "title",
-            end: "",
-          }}
-          editable
-          selectable
-          dayHeaderContent={(args) =>
-            ["일", "월", "화", "수", "목", "금", "토"][args.date.getDay()]
-          }
-        />
+        <div className={s.calendarContainer}>
+          <FullCalendar
+            ref={calendarRef}
+            plugins={[dayGridPlugin, interactionPlugin]}
+            initialView="dayGridMonth"
+            headerToolbar={{
+              left: "title",
+              end: "",
+            }}
+            editable
+            locale="ko"
+            dayCellContent={handleDayCellContent}
+            titleFormat={{ year: "numeric", month: "long" }}
+          />
+        </div>
       </div>
     </div>
   );
