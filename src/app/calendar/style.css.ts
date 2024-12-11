@@ -3,14 +3,14 @@ import theme from "@/ui/styles/theme.css";
 import { globalStyle, style } from "@vanilla-extract/css";
 
 export const container = style({
-  width: "100%",
+  width: "100vw",
   height: "100vh",
 });
 
 export const left = style({
   display: "flex",
   flexDirection: "column",
-  width: "57vw",
+  width: "60vw",
   height: "100%",
   borderLeft: `1px solid ${theme.gray[100]}`,
   borderRight: `1px solid ${theme.gray[100]}`,
@@ -99,4 +99,50 @@ globalStyle(".fc .fc-daygrid-day-number ", {
 
 globalStyle(".fc .fc-daygrid-day.fc-day-today", {
   backgroundColor: theme.white,
+});
+
+globalStyle(".fc-daygrid-event", {
+  borderRadius: "4px",
+});
+
+export const eventWrapper = style({
+  width: "100%",
+  padding: "2px",
+  display: "flex",
+  border: "none",
+  gap: "3px",
+});
+
+export const eventStick = style({
+  width: "3px",
+  height: "15px",
+  borderRadius: "4px",
+  margin: "2px",
+});
+
+export const eventTitle = style({
+  ...font.caption,
+});
+
+globalStyle(".fc-daygrid-day", {
+  height: "147.02px",
+});
+
+globalStyle(".fc .fc-daygrid-day-events", {
+  padding: "0 8px",
+  marginTop: "0",
+  display: "flex",
+  flexDirection: "column",
+  gap: "4px",
+});
+
+globalStyle(".fc .fc-daygrid-more-link", {
+  width: "100%",
+  textAlign: "center",
+  ...font.caption,
+  color: theme.gray[400],
+});
+
+globalStyle(".fc .fc-daygrid-more-link:hover", {
+  background: "none",
 });
