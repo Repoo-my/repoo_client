@@ -1,6 +1,7 @@
 import React from "react";
 import Search from "@/ui/src/icons/Search";
 import * as s from "./style.css";
+import theme from "@/ui/styles/theme.css";
 
 interface SearchBarProps {
   placeholder: string;
@@ -19,7 +20,7 @@ function SearchBar({
 }: SearchBarProps) {
   return (
     <div className={s.searchBar} style={{ width }}>
-      <Search />
+      <Search color={theme.gray[300]} />
       <input
         type="text"
         value={value}
