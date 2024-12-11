@@ -41,6 +41,15 @@ export const occupation = style({
   cursor: "pointer",
 });
 
+export const checkedBox = style({
+  padding: "4px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  background: theme.gray[600],
+  borderRadius: "100%",
+});
+
 export const name = style({
   ...font.H5,
   color: "#000",

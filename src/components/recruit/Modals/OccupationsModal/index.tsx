@@ -43,7 +43,13 @@ function OccupationsModal({ closeModal }: IModal) {
             className={s.occupation}
           >
             <p className={s.name}>{occupation.title}</p>
-            {isSelected[occupation.title] ? <Checked /> : <Unchcked />}
+            {isSelected[occupation.title] ? (
+              <div className={s.checkedBox}>
+                <Checked />
+              </div>
+            ) : (
+              <Unchcked />
+            )}
           </div>
         ))}
       </div>
