@@ -178,6 +178,7 @@ export const allDayBox = style({
 });
 
 export const tagBox = style({
+  position: "relative",
   width: "100%",
   padding: "5px 12px",
   cursor: "pointer",

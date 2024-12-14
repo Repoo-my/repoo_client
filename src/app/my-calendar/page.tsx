@@ -11,11 +11,13 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { DayCellContentArg } from "@fullcalendar/core";
 import Checked from "@/ui/src/icons/Checked";
+import ControlTagModal from "@/components/calendar/ControlTagModal";
 import * as s from "./style.css";
 
 function MyCalendar() {
   const [isSelected, setIsSelected] = useState(true);
   const [isAllDay, setIsAllDay] = useState(false);
+  const [isOpened, setIsOpend] = useState(true);
   const calendarRef = useRef<FullCalendar | null>(null);
 
   const handleDayCellContent = (arg: DayCellContentArg) => {
@@ -166,11 +168,22 @@ function MyCalendar() {
               </div>
               <p className={s.eventText}>종일</p>
             </div>
-            <div className={s.tagBox}>
+            <div
+              tabIndex={0}
+              role="button"
+              className={s.tagBox}
+              onClick={() => {
+                setIsOpend(true);
+              }}
+              onKeyDown={() => {
+                setIsOpend(true);
+              }}
+            >
               <div className={s.tagLeft}>
                 <p className={s.eventText}>태그</p>
                 <div className={s.tagLine} />
               </div>
+              {isOpened && <ControlTagModal />}
             </div>
             <div className={s.hr} />
             <input className={s.memo} placeholder="메모를 입력하세요" />
