@@ -18,7 +18,12 @@ export const sidebarMenu = [
     id: 2,
     title: "일정 관리",
     items: [
-      { id: 21, title: "나의 캘린더", icon: <Calendar />, link: "/calendar" },
+      {
+        id: 21,
+        title: "나의 캘린더",
+        icon: <Calendar />,
+        link: "/my-calendar",
+      },
     ],
   },
   {

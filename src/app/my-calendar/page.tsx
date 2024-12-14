@@ -13,7 +13,7 @@ import { DayCellContentArg } from "@fullcalendar/core";
 import Checked from "@/ui/src/icons/Checked";
 import * as s from "./style.css";
 
-function Calendar() {
+function MyCalendar() {
   const [isSelected, setIsSelected] = useState(true);
   const [isAllDay, setIsAllDay] = useState(false);
   const calendarRef = useRef<FullCalendar | null>(null);
@@ -180,4 +180,4 @@ function Calendar() {
   );
 }
 
-export default Calendar;
+export default MyCalendar;
