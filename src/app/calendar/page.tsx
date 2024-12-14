@@ -159,10 +159,10 @@ function Calendar() {
                 onKeyDown={handleAllDay}
                 className={s.allDayBox}
                 style={{
-                  background: isAllDay ? theme.gray[600] : theme.gray[200],
+                  background: isAllDay ? theme.gray[200] : theme.gray[600],
                 }}
               >
-                {isAllDay ? <Checked /> : null}
+                {isAllDay ? null : <Checked />}
               </div>
               <p className={s.eventText}>종일</p>
             </div>
