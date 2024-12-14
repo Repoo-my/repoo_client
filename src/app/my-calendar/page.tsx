@@ -166,6 +166,14 @@ function MyCalendar() {
               </div>
               <p className={s.eventText}>종일</p>
             </div>
+            <div className={s.tagBox}>
+              <div className={s.tagLeft}>
+                <p className={s.eventText}>태그</p>
+                <div className={s.tagLine} />
+              </div>
+            </div>
+            <div className={s.hr} />
+            <input className={s.memo} placeholder="메모를 입력하세요" />
           </div>
         ) : (
           <div className={s.searchTab}>

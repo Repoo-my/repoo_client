@@ -177,6 +177,40 @@ export const allDayBox = style({
   borderRadius: "4px",
 });
 
+export const tagBox = style({
+  width: "100%",
+  padding: "5px 12px",
+  cursor: "pointer",
+});
+
+export const tagLeft = style({
+  display: "flex",
+  alignItems: "center",
+  gap: "12px",
+});
+
+export const tagLine = style({
+  width: "1px",
+  height: "26px",
+  background: theme.gray[200],
+});
+
+export const hr = style({
+  width: "100%",
+  height: "1px",
+  background: theme.gray[200],
+  marginTop: "6px",
+});
+
+export const memo = style({
+  padding: "12px",
+  ...font.p3,
+  color: theme.black,
+  "::placeholder": {
+    color: theme.gray[400],
+  },
+});
+
 globalStyle(".fc-toolbar-title", {
   paddingLeft: "20px",
   color: theme.black,
