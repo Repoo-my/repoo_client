@@ -3,7 +3,7 @@ import { createGlobalTheme } from "@vanilla-extract/css";
 const theme = createGlobalTheme(":root", {
   light: {
     orange: "#FFDCC6",
-    rose: "#FFC8B4",
+    rose: "#FFC8D4",
     green: "#D2F1DD",
     blue: "#C8D8FC",
     yellow: "#FFF7CF",
