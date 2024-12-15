@@ -17,7 +17,7 @@ import * as s from "./style.css";
 function MyCalendar() {
   const [isSelected, setIsSelected] = useState(true);
   const [isAllDay, setIsAllDay] = useState(false);
-  const [isOpened, setIsOpend] = useState(true);
+  const [isOpened, setIsOpend] = useState(false);
   const calendarRef = useRef<FullCalendar | null>(null);
 
   const handleDayCellContent = (arg: DayCellContentArg) => {
@@ -183,7 +183,9 @@ function MyCalendar() {
                 <p className={s.eventText}>태그</p>
                 <div className={s.tagLine} />
               </div>
-              {isOpened && <ControlTagModal />}
+              {isOpened && (
+                <ControlTagModal isOpened={isOpened} setIsOpened={setIsOpend} />
+              )}
             </div>
             <div className={s.hr} />
             <input className={s.memo} placeholder="메모를 입력하세요" />
