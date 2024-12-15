@@ -1,7 +1,7 @@
 import React from "react";
 import Search from "@/ui/src/icons/Search";
-import * as s from "./style.css";
 import theme from "@/ui/styles/theme.css";
+import * as s from "./style.css";
 
 interface SearchBarProps {
   placeholder: string;

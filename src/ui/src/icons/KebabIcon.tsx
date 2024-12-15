@@ -1,6 +1,6 @@
 import React from "react";
 
-const KebabIcon = () => {
+function KebabIcon() {
   return (
     <svg
       width="20"
@@ -21,6 +21,6 @@ const KebabIcon = () => {
       </g>
     </svg>
   );
-};
+}
 
 export default KebabIcon;
