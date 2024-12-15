@@ -3,6 +3,7 @@ import Google from "@/ui/src/assets/OAuth/Google";
 import Kakao from "@/ui/src/assets/OAuth/Kakao";
 import Naver from "@/ui/src/assets/OAuth/Naver";
 import theme from "@/ui/styles/theme.css";
+import LoginButton from "@/components/login/Button";
 import * as s from "./style.css";
 
 function Login() {
@@ -16,26 +17,23 @@ function Login() {
         <p className={s.explain}>커리어 성장의 모든 것, 레포!</p>
       </div>
       <div className={s.oAuthList}>
-        <div
-          className={s.loginButton}
-          style={{
-            background: theme.white,
-            border: `1px solid ${theme.gray[200]}`,
-          }}
-        >
-          <Google />
-          <p className={s.loginText}>구글 로그인</p>
-        </div>
-        <div className={s.loginButton} style={{ background: "#fee500" }}>
-          <Kakao />
-          <p className={s.loginText}>카카오 로그인</p>
-        </div>
-        <div className={s.loginButton} style={{ background: "#03c75a" }}>
-          <Naver />
-          <p className={s.loginText} style={{ color: theme.white }}>
-            네이버 로그인
-          </p>
-        </div>
+        <LoginButton
+          backgroundColor={theme.white}
+          borderColor={theme.gray[200]}
+          icon={<Google />}
+          text="구글 로그인"
+        />
+        <LoginButton
+          backgroundColor="#fee500"
+          icon={<Kakao />}
+          text="카카오 로그인"
+        />
+        <LoginButton
+          backgroundColor="#03c75a"
+          textColor={theme.white}
+          icon={<Naver />}
+          text="네이버 로그인"
+        />
       </div>
     </div>
   );
