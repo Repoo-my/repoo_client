@@ -138,7 +138,7 @@ export const selects = style({
 });
 
 export const selectDate = style({
-  width: "140px",
+  width: "150px",
   padding: "6px 12px",
   background: theme.gray[50],
   borderRadius: "4px",

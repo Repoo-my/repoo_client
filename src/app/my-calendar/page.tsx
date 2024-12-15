@@ -15,9 +15,13 @@ import ControlTagModal from "@/components/calendar/ControlTagModal";
 import * as s from "./style.css";
 
 function MyCalendar() {
-  const [isSelected, setIsSelected] = useState(true);
+  const [eventDates, setEventDates] = useState({
+    start: "",
+    end: "",
+  });
+  const [isSelected, setIsSelected] = useState(false);
   const [isAllDay, setIsAllDay] = useState(false);
-  const [isOpened, setIsOpend] = useState(false);
+  const [isOpened, setIsOpened] = useState(false);
   const calendarRef = useRef<FullCalendar | null>(null);
 
   const handleDayCellContent = (arg: DayCellContentArg) => {
@@ -50,6 +54,26 @@ function MyCalendar() {
       document.removeEventListener("click", handleOutsideClick);
     };
   }, []);
+
+  const getNextDate = (dateString: string): string => {
+    if (!dateString) return "";
+    const nextDate = new Date(
+      new Date(dateString).setDate(new Date(dateString).getDate() + 1),
+    );
+    return nextDate.toISOString().split("T")[0];
+  };
+
+  const handleDateChange = (key: "start" | "end", value: string) => {
+    setEventDates((prevDates) => {
+      const newDates = { ...prevDates, [key]: value };
+
+      if (key === "start") {
+        newDates.end = getNextDate(value);
+      }
+
+      return newDates;
+    });
+  };
 
   const handleAllDay = () => {
     setIsAllDay(!isAllDay);
@@ -122,8 +146,9 @@ function MyCalendar() {
               },
             ]}
             moreLinkText={(num) => `외 ${num}개의 일정`}
-            dateClick={() => {
+            dateClick={(arg) => {
               setIsSelected(true);
+              handleDateChange("start", arg.dateStr);
             }}
           />
         </div>
@@ -136,7 +161,12 @@ function MyCalendar() {
               <div className={s.dateBox}>
                 <p className={s.eventText}>시작</p>
                 <div className={s.selects}>
-                  <input type="date" className={s.selectDate} />
+                  <input
+                    type="date"
+                    className={s.selectDate}
+                    value={eventDates.start}
+                    onChange={(e) => handleDateChange("start", e.target.value)}
+                  />
                   {isAllDay ? (
                     <input type="time" className={s.selectTime} />
                   ) : null}
@@ -145,7 +175,12 @@ function MyCalendar() {
               <div className={s.dateBox}>
                 <p className={s.eventText}>종료</p>
                 <div className={s.selects}>
-                  <input type="date" className={s.selectDate} />
+                  <input
+                    type="date"
+                    className={s.selectDate}
+                    value={eventDates.end}
+                    onChange={(e) => handleDateChange("end", e.target.value)}
+                  />
                   {isAllDay ? (
                     <input type="time" className={s.selectTime} />
                   ) : null}
@@ -173,10 +208,10 @@ function MyCalendar() {
               role="button"
               className={s.tagBox}
               onClick={() => {
-                setIsOpend(true);
+                setIsOpened(true);
               }}
               onKeyDown={() => {
-                setIsOpend(true);
+                setIsOpened(true);
               }}
             >
               <div className={s.tagLeft}>
@@ -184,7 +219,10 @@ function MyCalendar() {
                 <div className={s.tagLine} />
               </div>
               {isOpened && (
-                <ControlTagModal isOpened={isOpened} setIsOpened={setIsOpend} />
+                <ControlTagModal
+                  isOpened={isOpened}
+                  setIsOpened={setIsOpened}
+                />
               )}
             </div>
             <div className={s.hr} />
