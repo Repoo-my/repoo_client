@@ -12,7 +12,7 @@ function Login() {
       <p className={s.title}>나한테 꼭 맞는 채용정보만, 레포</p>
       <div className={s.explains}>
         <p className={s.explain}>
-          취업, 이직, 커리어 콘텐츠까지당신의 성장 여정을 함께합니다.
+          취업, 이직, 커리어 콘텐츠까지 당신의 성장 여정을 함께합니다.
         </p>
         <p className={s.explain}>커리어 성장의 모든 것, 레포!</p>
       </div>
