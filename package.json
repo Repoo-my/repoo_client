@@ -22,6 +22,8 @@
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/interaction": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
+    "@tanstack/react-query": "^4.36.1",
+    "@tanstack/react-query-devtools": "^5.62.7",
     "@vanilla-extract/css": "^1.16.0",
     "@vanilla-extract/next-plugin": "^2.4.6",
     "husky-init": "^8.0.0",

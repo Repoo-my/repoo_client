@@ -8,6 +8,7 @@ interface LoginButtonProps {
   textColor?: string;
   icon: React.ReactNode;
   text: string;
+  handleLogin: () => void;
 }
 
 function LoginButton({
@@ -16,14 +17,19 @@ function LoginButton({
   textColor,
   icon,
   text,
+  handleLogin,
 }: LoginButtonProps) {
   return (
     <div
+      role="button"
+      tabIndex={0}
       className={s.loginButton}
       style={{
         background: backgroundColor,
         border: borderColor ? `1px solid ${borderColor}` : "none",
       }}
+      onClick={handleLogin}
+      onKeyDown={handleLogin}
     >
       {icon}
       <p
