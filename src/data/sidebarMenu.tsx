@@ -2,8 +2,11 @@ import Calendar from "@/ui/src/icons/Sidebar/Calendar";
 import Menu from "@/ui/src/icons/Sidebar/Menu";
 import Office from "@/ui/src/icons/Sidebar/Office";
 import Pencil from "@/ui/src/icons/Sidebar/Pencil";
+import Profile from "@/ui/src/icons/Sidebar/Profile";
 import Sparkle from "@/ui/src/icons/Sidebar/Sparkle";
 import User from "@/ui/src/icons/Sidebar/User";
+
+const isLoggined = false;
 
 export const sidebarMenu = [
   {
@@ -37,6 +40,18 @@ export const sidebarMenu = [
         title: "지원기업 저장소",
         icon: <Office />,
         link: "/storage",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "내 정보",
+    items: [
+      {
+        id: 41,
+        title: isLoggined ? "추성우님" : "로그인",
+        icon: <Profile />,
+        link: "/login",
       },
     ],
   },
