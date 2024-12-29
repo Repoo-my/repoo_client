@@ -1,11 +1,16 @@
 import React from "react";
 
-function Logo() {
+interface LogoProps {
+  width?: number;
+  height?: number;
+}
+
+function Logo({ width, height }: LogoProps) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="104"
-      height="48"
+      width={width}
+      height={height}
       viewBox="0 0 104 48"
       fill="none"
     >
@@ -34,5 +39,10 @@ function Logo() {
     </svg>
   );
 }
+
+Logo.defaultProps = {
+  width: 104,
+  height: 48,
+};
 
 export default Logo;
