@@ -18,6 +18,12 @@ function Sidebar() {
     Object.fromEntries(sidebarMenu.map((menu) => [menu.id, true])),
   );
 
+  const noSidebarPaths = ["/login/additional-info"];
+
+  if (noSidebarPaths.includes(pathname)) {
+    return null;
+  }
+
   const toggleCategory = (menuId: number) => {
     setOpenedMenus((prev) => ({
       ...prev,
