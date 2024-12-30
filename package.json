@@ -26,6 +26,7 @@
     "@tanstack/react-query-devtools": "^5.62.7",
     "@vanilla-extract/css": "^1.16.0",
     "@vanilla-extract/next-plugin": "^2.4.6",
+    "axios": "^1.7.9",
     "husky-init": "^8.0.0",
     "next": "15.0.3",
     "react": "^18.2.0",
@@ -33,7 +34,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/axios": "^0.14.4",
+    "@types/node": "^20.17.10",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
