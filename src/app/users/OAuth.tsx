@@ -9,12 +9,13 @@ function OAuth() {
   const router = useRouter();
   const accessToken = useSearchParams().get("accessToken") || "";
   const refreshToken = useSearchParams().get("refreshToken") || "";
+  const newUser = useSearchParams().get("newUser") || "";
 
   useEffect(() => {
     Storage.setItem("accessToken", accessToken);
     Storage.setItem("refreshToken", refreshToken);
-    router.push("/");
-  }, [accessToken, refreshToken, router]);
+    router.replace(newUser === "1" ? "/login/additional-info" : "/");
+  }, [accessToken, refreshToken, router, newUser]);
 
   return (
     <div className={s.container}>

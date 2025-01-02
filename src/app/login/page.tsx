@@ -10,7 +10,7 @@ import * as s from "./style.css";
 
 function Login() {
   const handleLogin = (social: string) => {
-    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/${social}`;
+    window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/oauth2/authorization/${social}`;
   };
 
   return (
