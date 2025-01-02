@@ -6,9 +6,7 @@ import Profile from "@/ui/src/icons/Sidebar/Profile";
 import Sparkle from "@/ui/src/icons/Sidebar/Sparkle";
 import User from "@/ui/src/icons/Sidebar/User";
 
-const isLoggined = false;
-
-export const sidebarMenu = [
+export const getSidebarMenu = (isLoggined: boolean, userName: string) => [
   {
     id: 1,
     title: "채용 정보",
@@ -49,9 +47,9 @@ export const sidebarMenu = [
     items: [
       {
         id: 41,
-        title: isLoggined ? "추성우님" : "로그인",
+        title: isLoggined ? `${userName}님` : "로그인",
         icon: <Profile />,
-        link: "/login",
+        link: isLoggined ? "/profile" : "/login",
       },
     ],
   },
