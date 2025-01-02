@@ -6,6 +6,11 @@ export const getEmail = async () => {
   return data;
 };
 
+export const getMyInformation = async () => {
+  const { data } = await http.get("/api/users/info", accessToken());
+  return data;
+};
+
 export const requestPostInfo = async (infos: {
   userName: string;
   userGender: string;

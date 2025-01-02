@@ -3,4 +3,5 @@ export default interface IUser {
   userEmail: string;
   userGender: string;
   userAge: number;
+  isLogin: false;
 }
