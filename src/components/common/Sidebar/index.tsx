@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import { getSidebarMenu } from "@/data/sidebarMenu";
+import { useUser } from "@/hooks";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 import Logo from "@/ui/src/assets/Logo";
 import DownArrow from "@/ui/src/icons/DownArrow";
-import { sidebarMenu } from "@/data/sidebarMenu";
-import { usePathname, useRouter } from "next/navigation";
 import * as s from "./style.css";
 
 interface OpenedMenus {
@@ -14,9 +15,19 @@ interface OpenedMenus {
 function Sidebar() {
   const router = useRouter();
   const pathname = usePathname();
-  const [openedMenus, setOpenedMenus] = useState<OpenedMenus>(
-    Object.fromEntries(sidebarMenu.map((menu) => [menu.id, true])),
-  );
+
+  const { user, isLoggedIn } = useUser();
+
+  const sidebarMenu = getSidebarMenu(isLoggedIn, user.userName);
+  const initializeMenuState = () =>
+    Object.fromEntries(sidebarMenu.map((menu) => [menu.id, true]));
+  const [openedMenus, setOpenedMenus] =
+    useState<OpenedMenus>(initializeMenuState);
+
+  const noSidebarPaths = ["/login/additional-info"];
+  if (noSidebarPaths.includes(pathname)) {
+    return null;
+  }
 
   const toggleCategory = (menuId: number) => {
     setOpenedMenus((prev) => ({
@@ -28,7 +39,7 @@ function Sidebar() {
   return (
     <div className={s.container}>
       <div className={s.logoBox}>
-        <Logo />
+        <Logo width={104} height={48} />
       </div>
       <div className={s.categoryList}>
         {sidebarMenu.map((menu) => (

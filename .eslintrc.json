@@ -35,7 +35,22 @@
     "@typescript-eslint/no-throw-literal": "warn",
     "@typescript-eslint/lines-between-class-members": "warn",
     "import/prefer-default-export": "off",
-    "no-restricted-exports": "off"
+    "no-restricted-exports": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "**/*.test.ts",
+          "**/*.test.tsx",
+          "**/setupTests.ts",
+          "**/*.config.js",
+          "**/*.config.ts",
+          "**/scripts/**"
+        ],
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ]
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Google from "@/ui/src/assets/OAuth/Google";
 import Kakao from "@/ui/src/assets/OAuth/Kakao";
@@ -7,6 +9,10 @@ import LoginButton from "@/components/login/Button";
 import * as s from "./style.css";
 
 function Login() {
+  const handleLogin = (social: string) => {
+    window.location.href = `${process.env.NEXT_PUBLIC_SERVER_URL}/oauth2/authorization/${social}`;
+  };
+
   return (
     <div className={s.container}>
       <p className={s.title}>나한테 꼭 맞는 채용정보만, 레포</p>
@@ -22,17 +28,20 @@ function Login() {
           borderColor={theme.gray[200]}
           icon={<Google />}
           text="구글 로그인"
+          handleLogin={() => handleLogin("google")}
         />
         <LoginButton
           backgroundColor="#fee500"
           icon={<Kakao />}
           text="카카오 로그인"
+          handleLogin={() => handleLogin("kakao")}
         />
         <LoginButton
           backgroundColor="#03c75a"
           textColor={theme.white}
           icon={<Naver />}
           text="네이버 로그인"
+          handleLogin={() => handleLogin("naver")}
         />
       </div>
     </div>

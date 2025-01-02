@@ -1,5 +1,6 @@
 import Sidebar from "@/components/common/Sidebar";
 import "@/ui/styles/global.css";
+import ReactQueryProviders from "@/utils/react-query-provider";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,8 +16,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body style={{ display: "flex" }}>
-        <Sidebar />
-        {children}
+        <ReactQueryProviders>
+          <Sidebar />
+          {children}
+        </ReactQueryProviders>
       </body>
     </html>
   );

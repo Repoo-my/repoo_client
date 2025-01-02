@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { jobDetails } from "@/data/jobDetails";
-import companyEx from "@/assets/companyEx.png";
+import companyEx from "@/ui/src/assets/companyEx.png";
 import * as s from "./style.css";
 
 function JobDescription({
