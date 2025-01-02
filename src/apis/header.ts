@@ -1,13 +1,20 @@
 import { Storage } from "@/storage";
 
-export const authorization = () => ({
+export const accessToken = () => ({
   headers: {
-    Authorization: Storage.getItem("accessToken"),
+    accessToken: Storage.getItem("accessToken"),
   },
 });
 
 export const refreshToken = () => ({
   headers: {
-    RefreshToken: Storage.getItem("refreshToken"),
+    refreshToken: Storage.getItem("refreshToken"),
+  },
+});
+
+export const accessTokenAndRefreshToken = () => ({
+  headers: {
+    accessToken: Storage.getItem("accessToken"),
+    refreshToken: Storage.getItem("refreshToken"),
   },
 });
