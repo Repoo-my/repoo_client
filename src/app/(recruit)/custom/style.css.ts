@@ -42,4 +42,7 @@ export const postingList = style({
   gap: "24px",
   flexWrap: "wrap",
   overflowY: "auto",
+  "::-webkit-scrollbar": {
+    display: "none",
+  },
 });
