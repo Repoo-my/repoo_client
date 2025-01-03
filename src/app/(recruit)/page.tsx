@@ -5,22 +5,25 @@ import Tag from "@/components/recruit/Tag";
 import SearchBar from "@/components/recruit/SearchBar";
 import JobPosting from "@/components/recruit/JobPosting";
 import OccupationsModal from "@/components/recruit/Modals/OccupationsModal";
-import { companies } from "@/data/companies";
 import useModal from "@/hooks/useModal";
 import CareerYearsModal from "@/components/recruit/Modals/CareerYearsModal";
 import RegionsModal from "@/components/recruit/Modals/RegionsModal";
 import TechStacksModal from "@/components/recruit/Modals/TechStacksModal";
+import { useQuery } from "@tanstack/react-query";
+import { getJobposts } from "@/services/jobposts";
+import { IJobpost } from "@/types/IJobpost";
 import * as s from "./style.css";
 
 function All() {
+  const { data: jobposts = [] } = useQuery(["jobposts"], getJobposts);
   const filters = ["분야 전체", "경력 전체", "지역", "기술 스택"];
-  const [isInterested, setIsInterested] = useState<{ [key: number]: boolean }>(
+  const [isInterested, setIsInterested] = useState<{ [key: string]: boolean }>(
     {},
   );
   const [inputValue, setInputValue] = useState<string>("");
 
   const { isOpen, openModal, closeModal } = useModal();
-  const saveToInterests = (id: number) => {
+  const saveToInterests = (id: string) => {
     setIsInterested((posts) => ({
       ...posts,
       [id]: !posts[id],
@@ -98,18 +101,21 @@ function All() {
         />
       </div>
       <div className={s.postingList}>
-        {companies.map((company) => (
-          <JobPosting
-            key={company.id}
-            imgUrl={company.imgUrl}
-            postingTitle={company.postingTitle}
-            companyName={company.companyName}
-            isInterested={!!isInterested[company.id]}
-            setIsInterested={() => {
-              saveToInterests(company.id);
-            }}
-          />
-        ))}
+        {jobposts.map((company: IJobpost) => {
+          const key = company.enterpriseName + company.enterpriseName;
+          return (
+            <JobPosting
+              key={key}
+              imgUrl={company.jobPostImg}
+              postingTitle={company.title}
+              companyName={company.enterpriseName}
+              isInterested={!!isInterested[key]}
+              setIsInterested={() => {
+                saveToInterests(key);
+              }}
+            />
+          );
+        })}
       </div>
     </div>
   );
